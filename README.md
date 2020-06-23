@@ -6,9 +6,8 @@ You need to create an application that allows to user search companies and show 
 1. NextJS
 2. React
 3. React Hooks
-4. React Router
-5. Typescript
-6. Axios
+4. Typescript
+5. Axios
 
 ## Todo:
 ### Markup:
