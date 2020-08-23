@@ -23,4 +23,6 @@ You need to create an application that allows to user search companies and show 
 2. Show all found companies [https://app.informer.md/api/public/search?page=**CURRENT_PAGE**&company_name=**INPUT_VALUE**](https://app.informer.md/api/public/search?per_page=25&page=1)
 3. Show company's profile [https://app.informer.md/api/public/company?slug=**COMPANY_SLUG**](https://app.informer.md/api/public/company?slug=oilauto-lux)
 
+The screens with pages are not just example, make your pages similar as possible.
+
 [Design Source](https://informer.md/en)
