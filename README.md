@@ -9,6 +9,7 @@ You need to create an application that allows to user search companies and show 
 4. React Hooks
 5. Typescript
 6. Axios
+7. SASS
 
 ## Todo:
 ### Markup:
