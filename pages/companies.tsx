@@ -32,7 +32,7 @@ const Companies: React.FC = () => {
   }, [currentPage, search]);
 
   return (
-    <div className={styles.wrapper}>
+    <div>
       <div>Content Companies Page</div>
       <div className={styles.content}>
         All Companies

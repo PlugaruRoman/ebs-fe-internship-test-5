@@ -1,5 +1,8 @@
 import { useInformer } from '../utils/contextes/useInformer';
 
+import Image from 'next/image';
+import search from '../public/search.svg';
+
 import styles from '../styles/Home.module.scss';
 
 const SearchBar = () => {
@@ -17,7 +20,13 @@ const SearchBar = () => {
           onChange={onSearch}
         />
 
-        <button className={styles.searchButton}>Search</button>
+        <Image
+          className={styles.searchImage}
+          width={32}
+          height={32}
+          alt='search'
+          src={search}
+        />
 
         {search &&
           foundCompanies.map((el) => {

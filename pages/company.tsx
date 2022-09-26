@@ -25,7 +25,7 @@ const Company = () => {
   }, [selectedCompany]);
 
   return (
-    <div className={styles.wrapper}>
+    <div>
       <div>Content Company Page</div>
       <div className={styles.element}>
         {company ? company.name : 'loading...'}
