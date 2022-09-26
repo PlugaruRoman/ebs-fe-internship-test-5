@@ -1,28 +1,35 @@
 import React from 'react';
 import axios from 'axios';
+
+import { Pages, PagesNumber } from '../store';
 import { useInformer } from '../utils';
 
 import styles from '../styles/Home.module.scss';
 
 const Companies: React.FC = () => {
+  const { search, selectCompany } = useInformer();
+
   const [companies, setCompanies] = React.useState<Companies[]>([]);
+  const [currentPage, setCurrentPage] = React.useState(1);
+
+  const selectCurrentPage = (i: number) => {
+    setCurrentPage(i);
+  };
 
   React.useEffect(() => {
     async function fetchData() {
       try {
         const companiesResponse = await axios.get(
-          'https://app.informer.md/api/public/search?page=3&company_name='
+          `https://app.informer.md/api/public/search?page=${currentPage}&company_name=${search}`
         );
-        console.log(companiesResponse.data.data);
+
         setCompanies(companiesResponse.data.data);
       } catch (error) {
         alert('Error');
       }
     }
     fetchData();
-  }, []);
-
-  const {} = useInformer();
+  }, [currentPage, search]);
 
   return (
     <div className={styles.wrapper}>
@@ -31,11 +38,27 @@ const Companies: React.FC = () => {
         All Companies
         {companies.map((el) => {
           return (
-            <div key={el.id} className={styles.element}>
+            <div
+              onClick={() => selectCompany(el)}
+              key={el.id}
+              className={styles.element}
+            >
               {el.name}
             </div>
           );
         })}
+        <ul className={styles.pagesNumber}>
+          {Object.keys(Pages).map((el) => {
+            return (
+              <li
+                key={PagesNumber[el]}
+                onClick={() => selectCurrentPage(PagesNumber[el])}
+              >
+                {PagesNumber[el]}
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );

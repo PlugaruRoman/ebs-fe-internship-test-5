@@ -1,9 +1,17 @@
 import React from 'react';
 
 export interface InformerContextProps {
-  companies: Companies[];
+  search: string | null;
+  onSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  foundCompanies: Companies[];
+  selectCompany: (el: Companies) => void;
+  selectedCompany: Companies | null;
 }
 
 export const InformerContext = React.createContext<InformerContextProps>({
-  companies: [],
+  search: null,
+  onSearch: () => {},
+  foundCompanies: [],
+  selectCompany: () => {},
+  selectedCompany: null,
 });

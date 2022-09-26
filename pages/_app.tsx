@@ -1,12 +1,14 @@
 import Layout from '../components/Layout';
-
+import { InformerProvider } from '../utils';
 import '../styles/globals.scss';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <InformerProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </InformerProvider>
   );
 };
 

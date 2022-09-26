@@ -7,29 +7,47 @@ interface InformerProviderProps {
   children: React.ReactNode;
 }
 
-export const TodoProvider: React.FC<InformerProviderProps> = ({ children }) => {
-  const [companies, setCompanies] = React.useState<Companies[]>();
+export const InformerProvider: React.FC<InformerProviderProps> = ({
+  children,
+}) => {
+  const [foundCompanies, setFoundCompanies] = React.useState<Companies[]>();
+  const [search, setSearch] = React.useState('');
+  const [selectedCompany, setSelectedCompany] = React.useState<Companies>();
 
-  // React.useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const CompaniesResponse = await axios.get(
-  //         'https://app.informer.md/api/public/search?page=1&per_page=5&company_name'
-  //       );
-  //       setCompanies(CompaniesResponse.data.data);
-  //     } catch (error) {
-  //       alert('Error');
-  //     }
-  //   }
-  //   fetchData();
-  // }, []);
+  const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setSearch(value);
+  };
 
-  // const value = React.useMemo(
-  //   () => ({ companies }),
+  const selectCompany = (el: Companies) => {
+    setSelectedCompany(el);
+  };
 
-  //   [companies]
-  // );
+  React.useEffect(() => {
+    async function fetchData() {
+      try {
+        const searchCompanyResponse = await axios.get(
+          `https://app.informer.md/api/public/search?page=1&per_page=5&company_name=${search}`
+        );
 
+        setFoundCompanies(searchCompanyResponse.data.data);
+      } catch (error) {
+        alert('Error');
+      }
+    }
+    fetchData();
+  }, [search]);
+
+  const value = React.useMemo(
+    () => ({
+      onSearch,
+      search,
+      foundCompanies,
+      selectCompany,
+      selectedCompany,
+    }),
+    [onSearch, search, selectedCompany, selectCompany, foundCompanies]
+  );
   return (
     <InformerContext.Provider value={value}>
       {children}
