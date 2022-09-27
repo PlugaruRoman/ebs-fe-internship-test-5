@@ -1,20 +1,32 @@
+import React from 'react';
 import Link from 'next/link';
+
+import { NavBar } from '../store';
 
 import styles from '../styles/Home.module.scss';
 
 const Navbar = () => {
+  const [navSelected, setNavSelected] = React.useState<string>('Home');
+
+  const onClickSelectNav = (i: string) => {
+    setNavSelected(i);
+  };
+
   return (
     <div>
-      <div className={styles.nav}>
-        <Link href='/'>
-          <a>Home</a>
-        </Link>
-        <Link href='/companies'>
-          <a>Companies</a>
-        </Link>
-        <Link href='/company'>
-          <a>Company</a>
-        </Link>
+      <div className={styles.navBar}>
+        {Object.keys(NavBar).map((el) => {
+          return (
+            <Link key={el} href={NavBar[el]}>
+              <a
+                onClick={() => onClickSelectNav(el)}
+                className={navSelected === el ? styles.navActive : styles.nav}
+              >
+                {el}
+              </a>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

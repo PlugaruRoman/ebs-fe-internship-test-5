@@ -1,3 +1,7 @@
+.mainPage {
+  position: relative;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -11,11 +15,18 @@
   min-height: 86vh;
 }
 
-.element {
-  margin: 0 auto;
-  height: 100px;
-  width: 300px;
-  border: 2px solid black;
+.header {
+  position: sticky;
+  top: 0;
+  background: rgb(255, 255, 255);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  h1 {
+    margin-left: 40px;
+    color: rgb(126, 165, 254);
+  }
 }
 
 .pagesNumber {
@@ -29,23 +40,51 @@
   cursor: pointer;
 }
 
-.nav {
+.navBar {
   margin: 30px auto;
   width: 300px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
+}
+.nav {
+  padding: 15px;
+  transition: all 0.2s ease-in-out;
+  border-radius: 30px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  &:hover {
+    border-radius: 30px;
+    border: 1px solid rgb(126, 165, 254);
+    color: rgb(114, 156, 255);
+  }
+}
+.navActive {
+  border: 1px solid rgb(41, 105, 255);
+  border-radius: 30px;
+  padding: 15px;
+  color: rgb(41, 105, 255);
 }
 
 .searchBar {
   margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: relative;
+  background-color: rgb(255, 255, 255);
+  border-radius: 48px;
+  text-indent: 35px;
 
+  .searchImg {
+    position: absolute;
+    right: 27px;
+    top: 23px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+    &:hover {
+      opacity: 1;
+    }
+  }
   .searchBarInput {
+    text-indent: 20px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -54,14 +93,49 @@
     gap: 12px;
     width: 1000px;
     height: 75px;
-    box-shadow: 5px 4px 25px rgba(4, 169, 175, 0.25);
     border-radius: 45px;
     font-size: 20px;
-    border: 1px solid rgba(0, 245, 253, 0.25);
+    border: 1px solid rgba(4, 169, 175, 0.25);
+    transition: box-shadow 0.2s ease-in-out;
+    outline: none !important;
+    &:focus {
+      outline: none !important;
+      border-radius: 37px 37px 37px 37px;
+      box-shadow: 0px 4px 4px rgba(4, 169, 175, 0.25);
+    }
   }
-  .searchImage {
-    position: absolute;
-    top: 1;
+  .searchBarInputActive {
+    text-indent: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 100px 20px 20px;
+    gap: 12px;
+    width: 1000px;
+    height: 75px;
+    border-radius: 45px;
+    font-size: 20px;
+    border: 1px solid rgba(4, 169, 175, 0.25);
+    transition: box-shadow 0.2s ease-in-out;
+    outline: none !important;
+    &:focus {
+      outline: none !important;
+      border-radius: 37px 37px 0px 0px;
+      box-shadow: 0px 4px 4px rgba(4, 169, 175, 0.25);
+    }
+  }
+  .foundCompany {
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover {
+      background: rgba(42, 176, 180, 0.5);
+    }
+    &:hover:nth-child(6) {
+      background: rgba(42, 176, 180, 0.5);
+      border-radius: 0px 0px 37px 37px;
+    }
   }
 }
 
@@ -76,8 +150,219 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    li {
+      cursor: pointer;
+    }
   }
   .info {
     margin-right: 50px;
+  }
+}
+
+.companiesCardLong {
+  height: 450px;
+  width: 1000px;
+  border: 1px solid rgb(191, 193, 197);
+  margin: 20px auto;
+  border-radius: 15px;
+  .cardMainInfo {
+    height: 150px;
+    margin: 30px 0px 0px 30px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    .cardFoto {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(123, 138, 168);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    .cardTitle {
+      margin-left: 20px;
+      cursor: pointer;
+    }
+  }
+  .cardSecondInfo {
+    margin-left: 30px;
+    height: 210px;
+    display: flex;
+    justify-content: space-between;
+    li {
+      color: rgba(4, 169, 175, 1);
+    }
+    li > span {
+      font-weight: bold;
+      color: black;
+    }
+    .images {
+      margin-left: 20px;
+    }
+    .leftColumn {
+      padding: 10px;
+      width: 310px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .statusActive {
+        padding: 10px;
+        background: rgb(94, 255, 0);
+        border-radius: 10px;
+      }
+      .statusDeleted {
+        padding: 10px;
+        background: rgb(255, 0, 0);
+        border-radius: 10px;
+      }
+    }
+    .midlColumn {
+      padding: 10px;
+      width: 310px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .rightColumn {
+      padding: 10px;
+      width: 310px;
+      display: flex;
+      .contacts {
+        color: rgba(4, 169, 175, 1);
+      }
+      .rightColumnList {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        .text {
+          width: 150px;
+          position: absolute;
+          margin-left: 10px;
+        }
+      }
+      .rightColumnListElement {
+        opacity: 0.2;
+      }
+    }
+  }
+  .founders {
+    margin-left: 20px;
+    width: 950px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-top: 1px solid rgb(191, 193, 197);
+    color: rgb(84, 93, 111);
+    span {
+      margin-left: 10px;
+      font-weight: bold;
+      color: black;
+    }
+  }
+  .foundersNon {
+    display: none;
+  }
+}
+.companiesCard {
+  height: 400px;
+  width: 1000px;
+  border: 1px solid rgb(191, 193, 197);
+  margin: 20px auto;
+  border-radius: 15px;
+
+  .cardMainInfo {
+    height: 150px;
+    margin: 30px 0px 0px 30px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    .cardFoto {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(123, 138, 168);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    .cardTitle {
+      cursor: pointer;
+      margin-left: 20px;
+    }
+  }
+  .cardSecondInfo {
+    margin-left: 30px;
+    height: 210px;
+    display: flex;
+    justify-content: space-between;
+    li {
+      color: rgba(4, 169, 175, 1);
+    }
+    li > span {
+      font-weight: bold;
+      color: black;
+    }
+    .images {
+      margin-left: 20px;
+    }
+    .leftColumn {
+      padding: 10px;
+      width: 310px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .statusActive {
+        padding: 10px;
+        background: rgb(94, 255, 0);
+        border-radius: 10px;
+      }
+      .statusDeleted {
+        padding: 10px;
+        background: rgb(255, 0, 0);
+        border-radius: 10px;
+      }
+    }
+    .midlColumn {
+      padding: 10px;
+      width: 310px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .rightColumn {
+      padding: 10px;
+      width: 310px;
+      display: flex;
+      .contacts {
+        color: rgba(4, 169, 175, 1);
+      }
+      .rightColumnList {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+
+        .text {
+          width: 150px;
+          position: absolute;
+          margin-left: 10px;
+        }
+      }
+      .rightColumnListElement {
+        opacity: 0.2;
+      }
+    }
+  }
+  .founders {
+    display: block;
+    height: 50px;
+    border-top: 1px solid rgb(191, 193, 197);
+  }
+  .foundersNon {
+    display: none;
   }
 }

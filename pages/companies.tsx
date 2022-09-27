@@ -5,9 +5,10 @@ import { Pages, PagesNumber } from '../store';
 import { useInformer } from '../utils';
 
 import styles from '../styles/Home.module.scss';
+import CompaniesCard from './CompaniesCard';
 
 const Companies: React.FC = () => {
-  const { search, selectCompany } = useInformer();
+  const { search } = useInformer();
 
   const [companies, setCompanies] = React.useState<Companies[]>([]);
   const [currentPage, setCurrentPage] = React.useState(1);
@@ -33,19 +34,9 @@ const Companies: React.FC = () => {
 
   return (
     <div>
-      <div>Content Companies Page</div>
       <div className={styles.content}>
-        All Companies
         {companies.map((el) => {
-          return (
-            <div
-              onClick={() => selectCompany(el)}
-              key={el.id}
-              className={styles.element}
-            >
-              {el.name}
-            </div>
-          );
+          return <CompaniesCard key={el.id} props={el} />;
         })}
         <ul className={styles.pagesNumber}>
           {Object.keys(Pages).map((el) => {

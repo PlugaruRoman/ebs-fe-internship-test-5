@@ -7,7 +7,7 @@ import Navbar from './Navbar';
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <div className={styles.mainPage}>
       <Header />
       <div className={styles.wrapper}>
         <SearchBar />

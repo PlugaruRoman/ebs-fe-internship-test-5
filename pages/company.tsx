@@ -17,6 +17,7 @@ const Company = () => {
           `https://app.informer.md/api/public/company?slug=${selectedCompany.slug}`
         );
         setCompany(companyResponse.data);
+        console.log(companyResponse.data);
       } catch (error) {
         alert('Error');
       }

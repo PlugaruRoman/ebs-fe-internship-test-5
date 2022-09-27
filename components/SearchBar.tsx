@@ -1,7 +1,8 @@
 import { useInformer } from '../utils/contextes/useInformer';
 
+import Link from 'next/link';
 import Image from 'next/image';
-import search from '../public/search.svg';
+import searchs from '../public/searchs.svg';
 
 import styles from '../styles/Home.module.scss';
 
@@ -12,7 +13,9 @@ const SearchBar = () => {
     <div>
       <div className={styles.searchBar}>
         <input
-          className={styles.searchBarInput}
+          className={
+            search ? styles.searchBarInputActive : styles.searchBarInput
+          }
           name='name'
           id='name'
           type='text'
@@ -20,22 +23,25 @@ const SearchBar = () => {
           onChange={onSearch}
         />
 
-        <Image
-          className={styles.searchImage}
-          width={32}
-          height={32}
-          alt='search'
-          src={search}
-        />
-
         {search &&
           foundCompanies.map((el) => {
             return (
-              <div onClick={() => selectCompany(el)} key={el.id}>
+              <div
+                className={styles.foundCompany}
+                onClick={() => selectCompany(el)}
+                key={el.id}
+              >
                 {el.name} {el.idno}
               </div>
             );
           })}
+        <div className={styles.searchImg}>
+          <Link href={'/companies'}>
+            <a>
+              <Image width={35} height={35} alt='search' src={searchs} />
+            </a>
+          </Link>
+        </div>
       </div>
     </div>
   );

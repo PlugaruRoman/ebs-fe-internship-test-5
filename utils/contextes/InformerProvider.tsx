@@ -21,6 +21,7 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
 
   const selectCompany = (el: Companies) => {
     setSelectedCompany(el);
+    console.log(el);
   };
 
   React.useEffect(() => {

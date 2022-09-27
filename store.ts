@@ -13,3 +13,9 @@ export const Pages: { [key: string]: number } = {
   PageFour: 4,
   PageFive: 5,
 };
+
+export const NavBar: { [key: string]: string } = {
+  Home: '/',
+  Companies: 'companies',
+  Company: 'company',
+};
