@@ -121,7 +121,7 @@ const CompaniesCard = ({ props }) => {
       >
         Founders of the company:
         {props.partners.map((el: string) => (
-          <span>{el}</span>
+          <span key={el}>{el}</span>
         ))}
       </div>
     </div>

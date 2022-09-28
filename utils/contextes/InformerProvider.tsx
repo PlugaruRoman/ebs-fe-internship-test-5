@@ -14,6 +14,8 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
   const [search, setSearch] = React.useState('');
   const [selectedCompany, setSelectedCompany] = React.useState<Companies>();
 
+  const [company, setCompany] = React.useState<Company>();
+
   const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setSearch(value);
@@ -39,6 +41,21 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
     fetchData();
   }, [search]);
 
+  React.useEffect(() => {
+    async function fetchData() {
+      try {
+        const companyResponse = await axios.get(
+          `https://app.informer.md/api/public/company?slug=${selectedCompany.slug}`
+        );
+        setCompany(companyResponse.data);
+        console.log(companyResponse.data);
+      } catch (error) {
+        alert('Error');
+      }
+    }
+    fetchData();
+  }, [selectedCompany]);
+
   const value = React.useMemo(
     () => ({
       onSearch,
@@ -46,8 +63,9 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
       foundCompanies,
       selectCompany,
       selectedCompany,
+      company,
     }),
-    [onSearch, search, selectedCompany, selectCompany, foundCompanies]
+    [onSearch, search, selectedCompany, selectCompany, company, foundCompanies]
   );
   return (
     <InformerContext.Provider value={value}>

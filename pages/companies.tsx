@@ -5,7 +5,7 @@ import { Pages, PagesNumber } from '../store';
 import { useInformer } from '../utils';
 
 import styles from '../styles/Home.module.scss';
-import CompaniesCard from './CompaniesCard';
+import CompaniesCard from '../components/CompaniesCard';
 
 const Companies: React.FC = () => {
   const { search } = useInformer();

@@ -23,9 +23,11 @@
   display: flex;
   align-items: center;
   height: 70px;
+  margin: 0 auto;
   h1 {
-    margin-left: 40px;
     color: rgb(126, 165, 254);
+    width: 1200px;
+    margin: 0 auto;
   }
 }
 
@@ -144,6 +146,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 1200px;
+  margin: 0 auto;
   .list {
     width: 400px;
     display: flex;
@@ -364,5 +368,139 @@
   }
   .foundersNon {
     display: none;
+  }
+}
+
+.companyCard {
+  width: 1200px;
+  .cardMainInfo {
+    display: flex;
+    .cardFoto {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(123, 138, 168);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    .cardTitle {
+      margin: 20px 20px 0px 20px;
+
+      .cardName {
+        font-weight: bold;
+        font-size: 25px;
+        display: flex;
+        align-items: center;
+        span {
+          margin-left: 10px;
+          font-size: 10px;
+          background-color: rgb(189, 189, 189);
+          padding: 3px;
+          font-weight: bold;
+        }
+      }
+      .cardSpecialDescription {
+        margin-top: 20px;
+        color: rgb(123, 138, 168);
+      }
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  margin: 20px 0px 20px 0px;
+  li {
+    margin-right: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.1s ease-in-out;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+  .active:after {
+    margin-top: 20px;
+    content: '';
+    display: block;
+    background-color: rgb(123, 138, 168);
+    height: 2px;
+  }
+}
+
+.contentCard {
+  width: 1200px;
+  height: 600px;
+  .upColumn {
+    display: flex;
+    justify-content: space-between;
+    .column {
+      color: rgb(123, 138, 168);
+      width: 33.3%;
+      height: 150px;
+      border-radius: 5px;
+      background: rgb(255, 255, 255);
+      div {
+        margin: 30px 0px 0px 40px;
+      }
+      .bold {
+        color: black;
+        font-weight: bold;
+      }
+    }
+  }
+  .downColumn {
+    overflow: hidden;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    .column {
+      border-radius: 5px;
+      width: 49%;
+      min-height: 250px;
+      background: rgb(255, 255, 255);
+      .title {
+        margin: 20px 0px 0px 20px;
+        font-weight: normal;
+      }
+      .infoColumn {
+        display: flex;
+        margin-top: 20px;
+        border-top: 1px solid rgb(211, 211, 211);
+        .left {
+          margin-left: 20px;
+          width: 50%;
+          color: rgb(67, 86, 125);
+          font-weight: bold;
+          .email {
+            margin: 20px 0px;
+            .icon {
+              margin-top: 10px;
+            }
+          }
+          .web {
+            margin: 30px 0px;
+            word-break: break-all;
+          }
+        }
+        .right {
+          margin-top: 20px;
+          color: rgb(67, 86, 125);
+          font-weight: bold;
+          width: 50%;
+          .icon {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+    .map {
+      border-radius: 5px;
+      width: 49%;
+      min-height: 250px;
+      background: rgb(255, 255, 255);
+    }
   }
 }

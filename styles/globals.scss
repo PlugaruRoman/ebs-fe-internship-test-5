@@ -32,3 +32,8 @@ ul li {
   margin: 0;
   border: 0;
 }
+.leaflet-container {
+  min-height: 320px;
+  width: 100%;
+  z-index: 1;
+}
