@@ -1,10 +1,10 @@
 import React from 'react';
 
-import styles from '../styles/Home.module.scss';
+import styles from './CompanyNav.module.scss';
 
 const CompanyNav: React.FC = () => {
   return (
-    <div className={styles.navMenu}>
+    <div>
       <ul className={styles.menu}>
         <li className={styles.active}>General dates</li>
         <li>Personal</li>

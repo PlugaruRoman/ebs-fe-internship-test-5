@@ -1,13 +1,13 @@
 import Image from 'next/image';
 
-import { useInformer } from '../utils';
+import { useInformer } from '../../utils';
 
-import styles from '../styles/Home.module.scss';
+import styles from './CompaniesCard.module.scss';
 
-import mobile from '../public/mobile.svg';
-import phone from '../public/phone.svg';
-import mail from '../public/mail.svg';
-import website from '../public/web.svg';
+import mobile from '../../public/mobile.svg';
+import phone from '../../public/phone.svg';
+import mail from '../../public/mail.svg';
+import website from '../../public/web.svg';
 
 const CompaniesCard = ({ props }) => {
   const { selectCompany } = useInformer();

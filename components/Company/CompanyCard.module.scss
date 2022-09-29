@@ -1,0 +1,37 @@
+.companyCard {
+  width: 1200px;
+  .cardMainInfo {
+    display: flex;
+    .cardFoto {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(123, 138, 168);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    .cardTitle {
+      margin: 20px 20px 0px 20px;
+
+      .cardName {
+        font-weight: bold;
+        font-size: 25px;
+        display: flex;
+        align-items: center;
+        span {
+          margin-left: 10px;
+          font-size: 10px;
+          background-color: rgb(189, 189, 189);
+          padding: 3px;
+          font-weight: bold;
+        }
+      }
+      .cardSpecialDescription {
+        margin-top: 20px;
+        color: rgb(123, 138, 168);
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+.contentCard {
+  width: 1200px;
+  height: 600px;
+  .upColumn {
+    display: flex;
+    justify-content: space-between;
+    .column {
+      color: rgb(123, 138, 168);
+      width: 33.3%;
+      height: 150px;
+      border-radius: 5px;
+      background: rgb(255, 255, 255);
+      div {
+        margin: 30px 0px 0px 40px;
+      }
+      .bold {
+        color: black;
+        font-weight: bold;
+      }
+    }
+  }
+  .downColumn {
+    overflow: hidden;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    .column {
+      border-radius: 5px;
+      width: 49%;
+      min-height: 250px;
+      background: rgb(255, 255, 255);
+      .title {
+        margin: 20px 0px 0px 20px;
+        font-weight: normal;
+      }
+      .infoColumn {
+        display: flex;
+        margin-top: 20px;
+        border-top: 1px solid rgb(211, 211, 211);
+        .left {
+          margin-left: 20px;
+          width: 50%;
+          color: rgb(67, 86, 125);
+          font-weight: bold;
+          .email {
+            margin: 20px 0px;
+            .icon {
+              margin-top: 10px;
+            }
+          }
+          .web {
+            margin: 30px 0px;
+            word-break: break-all;
+          }
+        }
+        .right {
+          margin-top: 20px;
+          color: rgb(67, 86, 125);
+          font-weight: bold;
+          width: 50%;
+          .icon {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+    .map {
+      border-radius: 5px;
+      width: 49%;
+      min-height: 250px;
+      background: rgb(255, 255, 255);
+    }
+  }
+}

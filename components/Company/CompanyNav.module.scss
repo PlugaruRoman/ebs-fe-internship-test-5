@@ -1,0 +1,20 @@
+.menu {
+  display: flex;
+  margin: 20px 0px 20px 0px;
+  li {
+    margin-right: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.1s ease-in-out;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+  .active:after {
+    margin-top: 20px;
+    content: '';
+    display: block;
+    background-color: rgb(123, 138, 168);
+    height: 2px;
+  }
+}

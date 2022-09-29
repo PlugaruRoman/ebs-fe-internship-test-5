@@ -5,7 +5,7 @@ import { Pages, PagesNumber } from '../store';
 import { useInformer } from '../utils';
 
 import styles from '../styles/Home.module.scss';
-import CompaniesCard from '../components/CompaniesCard';
+import CompaniesCard from '../components/Companies/CompaniesCard';
 
 const Companies: React.FC = () => {
   const { search } = useInformer();
@@ -23,7 +23,7 @@ const Companies: React.FC = () => {
         const companiesResponse = await axios.get(
           `https://app.informer.md/api/public/search?page=${currentPage}&company_name=${search}`
         );
-
+        console.log('companies');
         setCompanies(companiesResponse.data.data);
       } catch (error) {
         alert('Error');
@@ -33,7 +33,7 @@ const Companies: React.FC = () => {
   }, [currentPage, search]);
 
   return (
-    <div>
+    <>
       <div className={styles.content}>
         {companies.map((el) => {
           return <CompaniesCard key={el.id} props={el} />;
@@ -51,7 +51,7 @@ const Companies: React.FC = () => {
           })}
         </ul>
       </div>
-    </div>
+    </>
   );
 };
 

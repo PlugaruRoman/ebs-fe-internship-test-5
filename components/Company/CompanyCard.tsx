@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { useInformer } from '../utils';
+import { useInformer } from '../../utils';
 
-import styles from '../styles/Home.module.scss';
+import styles from './CompanyCard.module.scss';
 
 const CompanyCard: React.FC = () => {
   const { company } = useInformer();

@@ -1,9 +1,9 @@
-import Header from './Header';
-import Footer from './Footer';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 import styles from '../styles/Home.module.scss';
-import SearchBar from './SearchBar';
-import Navbar from './Navbar';
+import SearchBar from './SearchBar/SearchBar';
+import Navbar from './NavBar/Navbar';
 
 const Layout = ({ children }) => {
   return (

@@ -1,21 +1,22 @@
 import React from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { useInformer } from '../utils';
+import { useInformer } from '../../utils';
 
-import OpenStreetMap from './OpenStreetMap';
+import OpenStreetMap from '../OpenMap/OpenStreetMap';
 
 import 'leaflet/dist/leaflet.css';
 
-import styles from '../styles/Home.module.scss';
+import styles from './CompanyInfo.module.scss';
 
-import mobile from '../public/mobile.svg';
-import phone from '../public/phone.svg';
-import mail from '../public/mail.svg';
-import fax from '../public/fax.svg';
+import mobile from '../../public/mobile.svg';
+import phone from '../../public/phone.svg';
+import mail from '../../public/mail.svg';
+import fax from '../../public/fax.svg';
 
-const ContentCompanyCard: React.FC = () => {
+const CompanyInfo: React.FC = () => {
   const { company } = useInformer();
 
   return (
@@ -96,4 +97,4 @@ const ContentCompanyCard: React.FC = () => {
   );
 };
 
-export default ContentCompanyCard;
+export default CompanyInfo;

@@ -1,0 +1,207 @@
+.companiesCardLong {
+  height: 450px;
+  width: 1000px;
+  border: 1px solid rgb(191, 193, 197);
+  margin: 20px auto;
+  border-radius: 15px;
+  .cardMainInfo {
+    height: 150px;
+    margin: 30px 0px 0px 30px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    .cardFoto {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(123, 138, 168);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    .cardTitle {
+      margin-left: 20px;
+      cursor: pointer;
+    }
+  }
+  .cardSecondInfo {
+    margin-left: 30px;
+    height: 210px;
+    display: flex;
+    justify-content: space-between;
+    li {
+      color: rgba(4, 169, 175, 1);
+    }
+    li > span {
+      font-weight: bold;
+      color: black;
+    }
+    .images {
+      margin-left: 20px;
+    }
+    .leftColumn {
+      padding: 10px;
+      width: 310px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .statusActive {
+        padding: 10px;
+        background: rgb(94, 255, 0);
+        border-radius: 10px;
+      }
+      .statusDeleted {
+        padding: 10px;
+        background: rgb(255, 0, 0);
+        border-radius: 10px;
+      }
+    }
+    .midlColumn {
+      padding: 10px;
+      width: 310px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .rightColumn {
+      padding: 10px;
+      width: 310px;
+      display: flex;
+      .contacts {
+        color: rgba(4, 169, 175, 1);
+      }
+      .rightColumnList {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        .text {
+          width: 150px;
+          position: absolute;
+          margin-left: 10px;
+        }
+      }
+      .rightColumnListElement {
+        opacity: 0.2;
+      }
+    }
+  }
+  .founders {
+    margin-left: 20px;
+    width: 950px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-top: 1px solid rgb(191, 193, 197);
+    color: rgb(84, 93, 111);
+    span {
+      margin-left: 10px;
+      font-weight: bold;
+      color: black;
+    }
+  }
+  .foundersNon {
+    display: none;
+  }
+}
+.companiesCard {
+  height: 400px;
+  width: 1000px;
+  border: 1px solid rgb(191, 193, 197);
+  margin: 20px auto;
+  border-radius: 15px;
+
+  .cardMainInfo {
+    height: 150px;
+    margin: 30px 0px 0px 30px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    .cardFoto {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(123, 138, 168);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    .cardTitle {
+      cursor: pointer;
+      margin-left: 20px;
+    }
+  }
+  .cardSecondInfo {
+    margin-left: 30px;
+    height: 210px;
+    display: flex;
+    justify-content: space-between;
+    li {
+      color: rgba(4, 169, 175, 1);
+    }
+    li > span {
+      font-weight: bold;
+      color: black;
+    }
+    .images {
+      margin-left: 20px;
+    }
+    .leftColumn {
+      padding: 10px;
+      width: 310px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .statusActive {
+        padding: 10px;
+        background: rgb(94, 255, 0);
+        border-radius: 10px;
+      }
+      .statusDeleted {
+        padding: 10px;
+        background: rgb(255, 0, 0);
+        border-radius: 10px;
+      }
+    }
+    .midlColumn {
+      padding: 10px;
+      width: 310px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .rightColumn {
+      padding: 10px;
+      width: 310px;
+      display: flex;
+      .contacts {
+        color: rgba(4, 169, 175, 1);
+      }
+      .rightColumnList {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+
+        .text {
+          width: 150px;
+          position: absolute;
+          margin-left: 10px;
+        }
+      }
+      .rightColumnListElement {
+        opacity: 0.2;
+      }
+    }
+  }
+  .founders {
+    display: block;
+    height: 50px;
+    border-top: 1px solid rgb(191, 193, 197);
+  }
+  .foundersNon {
+    display: none;
+  }
+}

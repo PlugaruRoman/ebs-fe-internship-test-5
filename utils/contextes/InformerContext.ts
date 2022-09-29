@@ -7,6 +7,7 @@ export interface InformerContextProps {
   selectCompany: (el: Companies) => void;
   selectedCompany: Companies | null;
   company: Company | null;
+  numberOfCompany: string | undefined;
 }
 
 export const InformerContext = React.createContext<InformerContextProps>({
@@ -16,4 +17,5 @@ export const InformerContext = React.createContext<InformerContextProps>({
   selectCompany: () => {},
   selectedCompany: null,
   company: null,
+  numberOfCompany: undefined,
 });

@@ -1,7 +1,10 @@
-import Layout from '../components/Layout';
-import { InformerProvider } from '../utils';
-import '../styles/globals.scss';
 import Head from 'next/head';
+
+import { InformerProvider } from '../utils';
+
+import Layout from '../components/Layout';
+
+import '../styles/globals.scss';
 
 const MyApp = ({ Component, pageProps }) => {
   return (

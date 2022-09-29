@@ -1,0 +1,21 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 1200px;
+  margin: 0 auto;
+  .list {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    li {
+      cursor: pointer;
+    }
+  }
+  .info {
+    margin-right: 50px;
+  }
+}

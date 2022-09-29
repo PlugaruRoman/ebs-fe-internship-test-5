@@ -1,4 +1,5 @@
 import React from 'react';
+
 import axios from 'axios';
 
 import { InformerContext } from './InformerContext';
@@ -13,7 +14,7 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
   const [foundCompanies, setFoundCompanies] = React.useState<Companies[]>();
   const [search, setSearch] = React.useState('');
   const [selectedCompany, setSelectedCompany] = React.useState<Companies>();
-
+  const [totalCompanyNumber, setTotalCompanyNumber] = React.useState();
   const [company, setCompany] = React.useState<Company>();
 
   const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,8 +24,15 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
 
   const selectCompany = (el: Companies) => {
     setSelectedCompany(el);
-    console.log(el);
   };
+
+  let numberOfCompany: string;
+  function numberWithCommas(x: any) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+  }
+  if (totalCompanyNumber !== undefined) {
+    numberOfCompany = numberWithCommas(totalCompanyNumber);
+  }
 
   React.useEffect(() => {
     async function fetchData() {
@@ -32,8 +40,9 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
         const searchCompanyResponse = await axios.get(
           `https://app.informer.md/api/public/search?page=1&per_page=5&company_name=${search}`
         );
-
         setFoundCompanies(searchCompanyResponse.data.data);
+        setTotalCompanyNumber(searchCompanyResponse.data.total_results);
+        console.log('search');
       } catch (error) {
         alert('Error');
       }
@@ -43,14 +52,16 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
 
   React.useEffect(() => {
     async function fetchData() {
-      try {
-        const companyResponse = await axios.get(
-          `https://app.informer.md/api/public/company?slug=${selectedCompany.slug}`
-        );
-        setCompany(companyResponse.data);
-        console.log(companyResponse.data);
-      } catch (error) {
-        alert('Error');
+      if (selectedCompany) {
+        try {
+          const companyResponse = await axios.get(
+            `https://app.informer.md/api/public/company?slug=${selectedCompany.slug}`
+          );
+          setCompany(companyResponse.data);
+          console.log('selected company');
+        } catch (error) {
+          alert('Error');
+        }
       }
     }
     fetchData();
@@ -64,8 +75,17 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
       selectCompany,
       selectedCompany,
       company,
+      numberOfCompany,
     }),
-    [onSearch, search, selectedCompany, selectCompany, company, foundCompanies]
+    [
+      onSearch,
+      search,
+      selectedCompany,
+      selectCompany,
+      company,
+      numberOfCompany,
+      foundCompanies,
+    ]
   );
   return (
     <InformerContext.Provider value={value}>

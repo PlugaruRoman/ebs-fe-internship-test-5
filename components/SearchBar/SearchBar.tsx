@@ -1,13 +1,15 @@
-import { useInformer } from '../utils/contextes/useInformer';
-
 import Link from 'next/link';
 import Image from 'next/image';
-import searchs from '../public/searchs.svg';
 
-import styles from '../styles/Home.module.scss';
+import { useInformer } from '../../utils/contextes/useInformer';
+
+import searcher from '../../public/searcher.svg';
+
+import styles from './SearchBar.module.scss';
 
 const SearchBar = () => {
-  const { onSearch, search, foundCompanies, selectCompany } = useInformer();
+  const { onSearch, search, foundCompanies, selectCompany, numberOfCompany } =
+    useInformer();
 
   return (
     <div>
@@ -19,7 +21,7 @@ const SearchBar = () => {
           name='name'
           id='name'
           type='text'
-          placeholder='Search from 225,175 Companies'
+          placeholder={`Search from ${numberOfCompany || '...'} Companies`}
           onChange={onSearch}
         />
 
@@ -38,7 +40,7 @@ const SearchBar = () => {
         <div className={styles.searchImg}>
           <Link href={'/companies'}>
             <a>
-              <Image width={35} height={35} alt='search' src={searchs} />
+              <Image width={35} height={35} alt='search' src={searcher} />
             </a>
           </Link>
         </div>

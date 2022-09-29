@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { NavBar } from '../store';
+import { NavBar } from '../../store';
 
-import styles from '../styles/Home.module.scss';
+import styles from './NavBar.module.scss';
 
 const Navbar = () => {
   const [navSelected, setNavSelected] = React.useState<string>('Home');
