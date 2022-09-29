@@ -8,14 +8,15 @@ import CompanyInfo from '../components/Company/CompanyInfo';
 
 const Company = () => {
   const { company } = useInformer();
-
-  return (
-    <>
-      <div>{company ? <CompanyCard /> : <div></div>}</div>
-      <div>{company ? <CompanyNav /> : <div></div>}</div>
-      <div>{company ? <CompanyInfo /> : <div></div>}</div>
-    </>
-  );
+  if (company) {
+    return (
+      <div>
+        <CompanyCard />
+        <CompanyNav />
+        <CompanyInfo />
+      </div>
+    );
+  }
 };
 
 export default Company;

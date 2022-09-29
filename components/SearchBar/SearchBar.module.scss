@@ -4,7 +4,7 @@
   background-color: rgb(255, 255, 255);
   border-radius: 48px;
   text-indent: 35px;
-
+  overflow: hidden;
   .searchImg {
     position: absolute;
     right: 27px;
@@ -33,7 +33,6 @@
     outline: none !important;
     &:focus {
       outline: none !important;
-      border-radius: 37px 37px 37px 37px;
       box-shadow: 0px 4px 4px rgba(4, 169, 175, 0.25);
     }
   }
@@ -52,6 +51,7 @@
     border: 1px solid rgba(4, 169, 175, 0.25);
     transition: box-shadow 0.2s ease-in-out;
     outline: none !important;
+    border-radius: 37px 37px 0px 0px;
     &:focus {
       outline: none !important;
       border-radius: 37px 37px 0px 0px;
@@ -64,10 +64,6 @@
     cursor: pointer;
     &:hover {
       background: rgba(42, 176, 180, 0.5);
-    }
-    &:hover:nth-child(6) {
-      background: rgba(42, 176, 180, 0.5);
-      border-radius: 0px 0px 37px 37px;
     }
   }
 }

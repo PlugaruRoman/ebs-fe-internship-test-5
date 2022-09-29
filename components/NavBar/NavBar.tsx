@@ -1,11 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { NavBar } from '../../store';
 
 import styles from './NavBar.module.scss';
 
 const Navbar = () => {
+  const { pathname } = useRouter();
+
   const [navSelected, setNavSelected] = React.useState<string>('Home');
 
   const onClickSelectNav = (i: string) => {
@@ -20,7 +23,9 @@ const Navbar = () => {
             <Link key={el} href={NavBar[el]}>
               <a
                 onClick={() => onClickSelectNav(el)}
-                className={navSelected === el ? styles.navActive : styles.nav}
+                className={
+                  pathname === NavBar[el] ? styles.navActive : styles.nav
+                }
               >
                 {el}
               </a>

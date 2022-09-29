@@ -1,8 +1,13 @@
 import React from 'react';
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-
+import L from 'leaflet';
 import { useInformer } from '../../utils';
+
+let customDefault = L.icon({
+  iconUrl: 'images/marker-icon.png',
+  shadowUrl: 'images/marker-shadow.png',
+});
 
 const OpenStreetMap: React.FC = () => {
   const { company } = useInformer();
@@ -50,6 +55,7 @@ const OpenStreetMap: React.FC = () => {
             company.general_data.contact_info.address_de_facto.additional
               .long !== null && (
               <Marker
+                icon={customDefault}
                 position={[
                   company.general_data.contact_info.address_de_facto.additional
                     .lat,

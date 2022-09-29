@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { useInformer } from '../../utils';
 
@@ -20,18 +21,23 @@ const CompaniesCard = ({ props }) => {
           : styles.companiesCard
       }
     >
-      <div onClick={() => selectCompany(props)} className={styles.cardMainInfo}>
-        <div className={styles.cardFoto}>
-          {props.name
-            .split(/[\s,-]+/)
-            .map((word: string) => word[0])
-            .join('')}
+      <Link href={'/company'}>
+        <div
+          onClick={() => selectCompany(props)}
+          className={styles.cardMainInfo}
+        >
+          <div className={styles.cardFoto}>
+            {props.name
+              .split(/[\s,-]+/)
+              .map((word: string) => word[0])
+              .join('')}
+          </div>
+          <div className={styles.cardTitle}>
+            <div>{props.name}</div>
+            <div>{props.location}</div>
+          </div>
         </div>
-        <div className={styles.cardTitle}>
-          <div>{props.name}</div>
-          <div>{props.location}</div>
-        </div>
-      </div>
+      </Link>
       <div className={styles.cardSecondInfo}>
         <ul className={styles.leftColumn}>
           <li>

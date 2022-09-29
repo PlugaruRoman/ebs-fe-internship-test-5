@@ -8,6 +8,11 @@ export interface InformerContextProps {
   selectedCompany: Companies | null;
   company: Company | null;
   numberOfCompany: string | undefined;
+  searchCompanies: () => void;
+  companies: Companies[];
+  allCompanies: Companies[];
+  selectCurrentPage: (i: number) => void;
+  pages: number;
 }
 
 export const InformerContext = React.createContext<InformerContextProps>({
@@ -18,4 +23,9 @@ export const InformerContext = React.createContext<InformerContextProps>({
   selectedCompany: null,
   company: null,
   numberOfCompany: undefined,
+  searchCompanies: () => {},
+  companies: [],
+  allCompanies: [],
+  selectCurrentPage: () => {},
+  pages: 0,
 });

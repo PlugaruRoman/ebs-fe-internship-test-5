@@ -8,29 +8,8 @@ import styles from '../styles/Home.module.scss';
 import CompaniesCard from '../components/Companies/CompaniesCard';
 
 const Companies: React.FC = () => {
-  const { search } = useInformer();
-
-  const [companies, setCompanies] = React.useState<Companies[]>([]);
-  const [currentPage, setCurrentPage] = React.useState(1);
-
-  const selectCurrentPage = (i: number) => {
-    setCurrentPage(i);
-  };
-
-  React.useEffect(() => {
-    async function fetchData() {
-      try {
-        const companiesResponse = await axios.get(
-          `https://app.informer.md/api/public/search?page=${currentPage}&company_name=${search}`
-        );
-        console.log('companies');
-        setCompanies(companiesResponse.data.data);
-      } catch (error) {
-        alert('Error');
-      }
-    }
-    fetchData();
-  }, [currentPage, search]);
+  const { search, companies, allCompanies, selectCurrentPage, pages } =
+    useInformer();
 
   return (
     <>
@@ -38,18 +17,7 @@ const Companies: React.FC = () => {
         {companies.map((el) => {
           return <CompaniesCard key={el.id} props={el} />;
         })}
-        <ul className={styles.pagesNumber}>
-          {Object.keys(Pages).map((el) => {
-            return (
-              <li
-                key={PagesNumber[el]}
-                onClick={() => selectCurrentPage(PagesNumber[el])}
-              >
-                {PagesNumber[el]}
-              </li>
-            );
-          })}
-        </ul>
+        <div className={styles.pagesNumber}></div>
       </div>
     </>
   );

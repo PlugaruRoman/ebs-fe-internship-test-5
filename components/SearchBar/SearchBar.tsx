@@ -8,11 +8,17 @@ import searcher from '../../public/searcher.svg';
 import styles from './SearchBar.module.scss';
 
 const SearchBar = () => {
-  const { onSearch, search, foundCompanies, selectCompany, numberOfCompany } =
-    useInformer();
+  const {
+    onSearch,
+    searchCompanies,
+    search,
+    foundCompanies,
+    selectCompany,
+    numberOfCompany,
+  } = useInformer();
 
   return (
-    <div>
+    <>
       <div className={styles.searchBar}>
         <input
           className={
@@ -23,29 +29,31 @@ const SearchBar = () => {
           type='text'
           placeholder={`Search from ${numberOfCompany || '...'} Companies`}
           onChange={onSearch}
+          value={search}
         />
 
         {search &&
           foundCompanies.map((el) => {
             return (
-              <div
-                className={styles.foundCompany}
-                onClick={() => selectCompany(el)}
-                key={el.id}
-              >
-                {el.name} {el.idno}
-              </div>
+              <Link key={el.id} href={'/company'}>
+                <div
+                  className={styles.foundCompany}
+                  onClick={() => selectCompany(el)}
+                >
+                  {el.name} {el.idno}
+                </div>
+              </Link>
             );
           })}
         <div className={styles.searchImg}>
           <Link href={'/companies'}>
-            <a>
+            <a onClick={searchCompanies}>
               <Image width={35} height={35} alt='search' src={searcher} />
             </a>
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
