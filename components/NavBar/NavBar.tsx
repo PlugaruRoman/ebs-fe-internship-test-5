@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -7,9 +8,9 @@ import { NavBar } from '../../store';
 import styles from './NavBar.module.scss';
 
 const Navbar = () => {
-  const { pathname } = useRouter();
-
   const [navSelected, setNavSelected] = React.useState<string>('Home');
+
+  const { pathname } = useRouter();
 
   const onClickSelectNav = (i: string) => {
     setNavSelected(i);

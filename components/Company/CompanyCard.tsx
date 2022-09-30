@@ -13,7 +13,8 @@ const CompanyCard: React.FC = () => {
         <div className={styles.cardFoto}>
           {company
             ? company.name
-                .split(/[\s,-]+/)
+                .split(/[\s,.-]+/)
+                .filter((word: string) => word.length > 3)
                 .map((word: string) => word[0])
                 .join('')
             : ''}

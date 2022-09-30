@@ -4,6 +4,12 @@
   border: 1px solid rgb(191, 193, 197);
   margin: 20px auto;
   border-radius: 15px;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+  }
   .cardMainInfo {
     height: 150px;
     margin: 30px 0px 0px 30px;
@@ -49,11 +55,13 @@
       .statusActive {
         padding: 10px;
         background: rgb(94, 255, 0);
+        color: rgb(255, 255, 255);
         border-radius: 10px;
       }
       .statusDeleted {
         padding: 10px;
         background: rgb(255, 0, 0);
+        color: rgb(255, 255, 255);
         border-radius: 10px;
       }
     }
@@ -76,6 +84,14 @@
         flex-direction: column;
         justify-content: space-between;
         position: relative;
+        li {
+          cursor: pointer;
+          transition: all 0.1s linear;
+          opacity: 0.7;
+          &:hover {
+            opacity: 1;
+          }
+        }
         .text {
           width: 150px;
           position: absolute;
@@ -83,6 +99,7 @@
         }
       }
       .rightColumnListElement {
+        cursor: not-allowed;
         opacity: 0.2;
       }
     }
@@ -111,7 +128,12 @@
   border: 1px solid rgb(191, 193, 197);
   margin: 20px auto;
   border-radius: 15px;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 
+  &:hover {
+    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+  }
   .cardMainInfo {
     height: 150px;
     margin: 30px 0px 0px 30px;
@@ -156,12 +178,14 @@
       justify-content: space-between;
       .statusActive {
         padding: 10px;
+        color: rgb(255, 255, 255);
         background: rgb(94, 255, 0);
         border-radius: 10px;
       }
       .statusDeleted {
         padding: 10px;
         background: rgb(255, 0, 0);
+        color: rgb(255, 255, 255);
         border-radius: 10px;
       }
     }
@@ -184,7 +208,14 @@
         flex-direction: column;
         justify-content: space-between;
         position: relative;
-
+        li {
+          cursor: pointer;
+          transition: all 0.1s linear;
+          opacity: 0.7;
+          &:hover {
+            opacity: 1;
+          }
+        }
         .text {
           width: 150px;
           position: absolute;
@@ -193,6 +224,7 @@
       }
       .rightColumnListElement {
         opacity: 0.2;
+        cursor: not-allowed;
       }
     }
   }

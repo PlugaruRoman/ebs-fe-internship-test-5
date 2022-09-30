@@ -46,6 +46,13 @@
             margin: 20px 0px;
             .icon {
               margin-top: 10px;
+              width: 30px;
+              cursor: pointer;
+              transition: all 0.1s linear;
+              opacity: 0.7;
+              &:hover {
+                opacity: 1;
+              }
             }
           }
           .web {
@@ -60,6 +67,13 @@
           width: 50%;
           .icon {
             margin-top: 10px;
+            width: 30px;
+            cursor: pointer;
+            transition: all 0.1s linear;
+            opacity: 0.7;
+            &:hover {
+              opacity: 1;
+            }
           }
         }
       }

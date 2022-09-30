@@ -3,17 +3,17 @@ import Image from 'next/image';
 
 import { useInformer } from '../../utils/contextes/useInformer';
 
-import searcher from '../../public/searcher.svg';
-
 import styles from './SearchBar.module.scss';
+
+import searcher from '../../public/searcher.svg';
 
 const SearchBar = () => {
   const {
     onSearch,
     searchCompanies,
+    selectCompany,
     search,
     foundCompanies,
-    selectCompany,
     numberOfCompany,
   } = useInformer();
 
@@ -24,8 +24,6 @@ const SearchBar = () => {
           className={
             search ? styles.searchBarInputActive : styles.searchBarInput
           }
-          name='name'
-          id='name'
           type='text'
           placeholder={`Search from ${numberOfCompany || '...'} Companies`}
           onChange={onSearch}

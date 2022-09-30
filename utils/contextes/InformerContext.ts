@@ -1,31 +1,35 @@
 import React from 'react';
 
 export interface InformerContextProps {
-  search: string | null;
   onSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  foundCompanies: Companies[];
   selectCompany: (el: Companies) => void;
+  searchCompanies: () => void;
+  setCurrentPage: (i: number) => void;
+  changeModalState: () => void;
+  search: string | null;
+  foundCompanies: Companies[];
   selectedCompany: Companies | null;
   company: Company | null;
   numberOfCompany: string | undefined;
-  searchCompanies: () => void;
-  companies: Companies[];
   allCompanies: Companies[];
-  selectCurrentPage: (i: number) => void;
   pages: number;
+  currentPage: number;
+  modalActive: boolean;
 }
 
 export const InformerContext = React.createContext<InformerContextProps>({
-  search: null,
   onSearch: () => {},
-  foundCompanies: [],
   selectCompany: () => {},
+  searchCompanies: () => {},
+  setCurrentPage: () => {},
+  changeModalState: () => {},
+  search: null,
+  foundCompanies: [],
   selectedCompany: null,
   company: null,
   numberOfCompany: undefined,
-  searchCompanies: () => {},
-  companies: [],
   allCompanies: [],
-  selectCurrentPage: () => {},
   pages: 0,
+  currentPage: 0,
+  modalActive: false,
 });

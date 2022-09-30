@@ -1,5 +1,3 @@
-interface SelectCompany {}
-
 interface Companies {
   id: number;
   slug: string;

@@ -22,7 +22,8 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
   const [pages, setPages] = React.useState();
   const [currentPage, setCurrentPage] = React.useState(1);
 
-  const [companies, setCompanies] = React.useState<Companies[]>([]);
+  const [prevCompanies, setPrevCompanies] = React.useState(false);
+  const [modalActive, setModalActive] = React.useState(false);
 
   const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -35,8 +36,9 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
   };
 
   const searchCompanies = () => {
-    setCompanies(allCompanies);
-    setSearch('');
+    setAllCompanies(allCompanies);
+    setPrevCompanies((prev) => !prev);
+    setCurrentPage(1);
   };
 
   let numberOfCompany: string;
@@ -47,8 +49,8 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
     numberOfCompany = numberWithCommas(totalCompanyNumber);
   }
 
-  const selectCurrentPage = (i: number) => {
-    setCurrentPage(i);
+  const changeModalState = (): void => {
+    setModalActive((prev) => !prev);
   };
 
   React.useEffect(() => {
@@ -70,7 +72,9 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
     async function fetchData() {
       try {
         const companiesResponse = await axios.get(
-          `https://app.informer.md/api/public/search?page=${currentPage}&company_name=${search}`
+          `https://app.informer.md/api/public/search?page=${
+            currentPage !== 400 ? currentPage : 399
+          }&company_name=${search}`
         );
         setAllCompanies(companiesResponse.data.data);
         setPages(companiesResponse.data.pages);
@@ -79,7 +83,7 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
       }
     }
     fetchData();
-  }, [currentPage, search]);
+  }, [currentPage, , pages, prevCompanies]);
 
   React.useEffect(() => {
     async function fetchData() {
@@ -100,31 +104,35 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
   const value = React.useMemo(
     () => ({
       onSearch,
+      selectCompany,
+      searchCompanies,
+      setCurrentPage,
+      changeModalState,
       search,
       foundCompanies,
-      selectCompany,
       selectedCompany,
       company,
       numberOfCompany,
-      searchCompanies,
-      companies,
       allCompanies,
-      selectCurrentPage,
       pages,
+      currentPage,
+      modalActive,
     }),
     [
       onSearch,
-      search,
-      selectedCompany,
       selectCompany,
+      searchCompanies,
+      setCurrentPage,
+      changeModalState,
+      search,
+      foundCompanies,
+      selectedCompany,
       company,
       numberOfCompany,
-      foundCompanies,
-      searchCompanies,
-      companies,
       allCompanies,
-      selectCurrentPage,
       pages,
+      currentPage,
+      modalActive,
     ]
   );
   return (

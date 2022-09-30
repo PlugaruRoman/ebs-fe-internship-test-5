@@ -11,7 +11,7 @@ import mail from '../../public/mail.svg';
 import website from '../../public/web.svg';
 
 const CompaniesCard = ({ props }) => {
-  const { selectCompany } = useInformer();
+  const { selectCompany, changeModalState } = useInformer();
 
   return (
     <div
@@ -28,7 +28,8 @@ const CompaniesCard = ({ props }) => {
         >
           <div className={styles.cardFoto}>
             {props.name
-              .split(/[\s,-]+/)
+              .split(/[\s,.-]+/)
+              .filter((word: string) => word.length > 3)
               .map((word: string) => word[0])
               .join('')}
           </div>
@@ -52,8 +53,7 @@ const CompaniesCard = ({ props }) => {
                   : styles.statusDeleted
               }
             >
-              {' '}
-              {props.status}{' '}
+              {props.status}
             </span>
           </li>
           <li>
@@ -65,11 +65,11 @@ const CompaniesCard = ({ props }) => {
         </ul>
         <ul className={styles.midlColumn}>
           <li>
-            Nr. by the employees:{' '}
+            Nr. by the employees:
             <span>{props.employees ? props.employees : '---'}</span>
           </li>
           <li>
-            Turnover :{' '}
+            Turnover :
             <span>{props.turnover ? `${props.turnover}  MLD` : '---'} </span>
           </li>
           <li>
@@ -79,43 +79,39 @@ const CompaniesCard = ({ props }) => {
         <div className={styles.rightColumn}>
           <div className={styles.contacts}> Contacts: </div>
           <ul className={styles.rightColumnList}>
-            <li>
-              <span
-                className={props.mobile ? '' : styles.rightColumnListElement}
-              >
-                <Image height={20} width={20} src={mobile} alt='mobile' />
-                <span className={styles.text}>Phone mobile</span>
-              </span>
+            <li
+              onClick={changeModalState}
+              className={props.mobile ? '' : styles.rightColumnListElement}
+            >
+              <Image height={20} width={20} src={mobile} alt='mobile' />
+              <span className={styles.text}>Phone mobile</span>
             </li>
-            <li>
-              <span
-                className={props.phone ? '' : styles.rightColumnListElement}
-              >
-                <Image height={20} width={20} src={phone} alt='phone' />
-                <span className={styles.text}>Phone</span>
-              </span>
+            <li
+              onClick={changeModalState}
+              className={props.phone ? '' : styles.rightColumnListElement}
+            >
+              <Image height={20} width={20} src={phone} alt='phone' />
+              <span className={styles.text}>Phone</span>
             </li>
-            <li>
-              <span
-                className={props.email ? '' : styles.rightColumnListElement}
-              >
-                <Image height={20} width={20} src={mail} alt='email' />
-                <span className={styles.text}>Email</span>
-              </span>
+            <li
+              onClick={changeModalState}
+              className={props.email ? '' : styles.rightColumnListElement}
+            >
+              <Image height={20} width={20} src={mail} alt='email' />
+              <span className={styles.text}>Email</span>
             </li>
-            <li>
-              <span
-                className={props.website ? '' : styles.rightColumnListElement}
-              >
-                <Image
-                  className={styles.imgss}
-                  height={20}
-                  width={20}
-                  src={website}
-                  alt='website'
-                />
-                <span className={styles.text}>Website</span>
-              </span>
+            <li
+              onClick={changeModalState}
+              className={props.website ? '' : styles.rightColumnListElement}
+            >
+              <Image
+                className={styles.imgss}
+                height={20}
+                width={20}
+                src={website}
+                alt='website'
+              />
+              <span className={styles.text}>Website</span>
             </li>
           </ul>
         </div>

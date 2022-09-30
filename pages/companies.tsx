@@ -1,23 +1,40 @@
 import React from 'react';
-import axios from 'axios';
 
-import { Pages, PagesNumber } from '../store';
+import Image from 'next/image';
+
+import { Pagination } from '@mui/material';
+
 import { useInformer } from '../utils';
 
-import styles from '../styles/Home.module.scss';
 import CompaniesCard from '../components/Companies/CompaniesCard';
+import Modal from '../components/Modal/Modal';
+
+import results from '../public/results.png';
+
+import styles from '../styles/Home.module.scss';
 
 const Companies: React.FC = () => {
-  const { search, companies, allCompanies, selectCurrentPage, pages } =
+  const { allCompanies, setCurrentPage, pages, currentPage, numberOfCompany } =
     useInformer();
 
   return (
     <>
+      <Modal />
       <div className={styles.content}>
-        {companies.map((el) => {
+        <div className={styles.numberOfCompanies}>
+          <Image height={20} width={20} src={results} alt='results' />
+          <span>{`${numberOfCompany || '...'} of results`}</span>
+        </div>
+        {allCompanies.map((el) => {
           return <CompaniesCard key={el.id} props={el} />;
         })}
-        <div className={styles.pagesNumber}></div>
+        <div className={styles.pagination}>
+          <Pagination
+            onChange={(_, num) => setCurrentPage(num)}
+            count={pages}
+            page={currentPage}
+          />
+        </div>
       </div>
     </>
   );

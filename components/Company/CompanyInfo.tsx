@@ -2,10 +2,9 @@ import React from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
 import { useInformer } from '../../utils';
-
-import OpenStreetMap from '../OpenMap/OpenStreetMap';
 
 import 'leaflet/dist/leaflet.css';
 
@@ -16,8 +15,12 @@ import phone from '../../public/phone.svg';
 import mail from '../../public/mail.svg';
 import fax from '../../public/fax.svg';
 
+const MyAwesomeMap = dynamic(() => import('../OpenMap/OpenStreetMap'), {
+  ssr: false,
+});
+
 const CompanyInfo: React.FC = () => {
-  const { company } = useInformer();
+  const { company, changeModalState } = useInformer();
 
   return (
     <div className={styles.contentCard}>
@@ -44,7 +47,7 @@ const CompanyInfo: React.FC = () => {
             <div className={styles.left}>
               <div className={styles.email}>
                 EMAIL:
-                <div className={styles.icon}>
+                <div onClick={changeModalState} className={styles.icon}>
                   {company.general_data.contact_info.emails.length > 0 ? (
                     <Image height={20} width={20} src={mail} />
                   ) : (
@@ -57,7 +60,11 @@ const CompanyInfo: React.FC = () => {
                 <div>
                   {company.general_data.contact_info.sites.length > 0 && (
                     <Link href={company.general_data.contact_info.sites[0]}>
-                      <a>{company.general_data.contact_info.sites}</a>
+                      <a>
+                        {company.general_data.contact_info.sites.map((el) => {
+                          return <div key={el}>{el}</div>;
+                        })}
+                      </a>
                     </Link>
                   )}
                 </div>
@@ -65,32 +72,32 @@ const CompanyInfo: React.FC = () => {
             </div>
             <div className={styles.right}>
               PHONE/CELL PHONE/FAX:
-              <div className={styles.icon}>
+              <div onClick={changeModalState} className={styles.icon}>
                 {company.general_data.contact_info.phones.length > 0 ? (
                   <Image height={20} width={20} src={phone} />
                 ) : (
                   ''
                 )}
               </div>
-              <div className={styles.icon}>
+              <div onClick={changeModalState} className={styles.icon}>
                 {company.general_data.contact_info.mobile.length > 0 ? (
                   <Image height={20} width={20} src={mobile} />
                 ) : (
                   ''
                 )}
               </div>
-              <div className={styles.icon}>
+              <div onClick={changeModalState} className={styles.icon}>
                 {company.general_data.contact_info.faxes.length > 0 ? (
                   <Image height={20} width={20} src={fax} />
                 ) : (
                   ''
-                )}{' '}
+                )}
               </div>
             </div>
           </div>
         </div>
         <div className={styles.map}>
-          <OpenStreetMap />
+          <MyAwesomeMap />
         </div>
       </div>
     </div>
