@@ -2,10 +2,11 @@ import React from 'react';
 
 export interface InformerContextProps {
   onSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  selectCompany: (el: Companies) => void;
   searchCompanies: () => void;
-  setCurrentPage: (i: number) => void;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   changeModalState: () => void;
+  setSelectedCompany: React.Dispatch<React.SetStateAction<Companies>>;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
   search: string | null;
   foundCompanies: Companies[];
   selectedCompany: Companies | null;
@@ -19,10 +20,11 @@ export interface InformerContextProps {
 
 export const InformerContext = React.createContext<InformerContextProps>({
   onSearch: () => {},
-  selectCompany: () => {},
   searchCompanies: () => {},
   setCurrentPage: () => {},
   changeModalState: () => {},
+  setSelectedCompany: () => {},
+  setSearch: () => {},
   search: null,
   foundCompanies: [],
   selectedCompany: null,

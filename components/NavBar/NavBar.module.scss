@@ -1,15 +1,23 @@
 .navBar {
-  margin: 30px;
-  width: 300px;
+  padding: 30px;
+  max-width: 300px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin: 0px auto;
+  @media (max-width: 360px) {
+    font-size: 10px;
+    .navBar {
+      padding: 10px;
+    }
+  }
 }
 .nav {
   padding: 15px;
   transition: all 0.2s ease-in-out;
   border-radius: 30px;
   border: 1px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
   &:hover {
     border-radius: 30px;
     border: 1px solid rgb(126, 165, 254);

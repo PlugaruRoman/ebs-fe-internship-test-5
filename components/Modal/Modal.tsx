@@ -3,11 +3,11 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { useInformer } from '../../utils';
-
-import close from '../../public/close.png';
+import { useInformer } from 'utils/index';
 
 import styles from './Modal.module.scss';
+
+import close from 'public/close.png';
 
 const Modal: React.FC = () => {
   const { modalActive, changeModalState } = useInformer();

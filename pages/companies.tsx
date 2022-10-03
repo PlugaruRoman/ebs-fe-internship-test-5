@@ -4,18 +4,22 @@ import Image from 'next/image';
 
 import { Pagination } from '@mui/material';
 
-import { useInformer } from '../utils';
+import { useInformer } from 'utils/index';
 
-import CompaniesCard from '../components/Companies/CompaniesCard';
-import Modal from '../components/Modal/Modal';
+import CompaniesCard from 'components/Companies/CompaniesCard';
+import Modal from 'components/Modal/Modal';
 
-import results from '../public/results.png';
+import styles from 'styles/Home.module.scss';
 
-import styles from '../styles/Home.module.scss';
+import results from 'public/results.png';
 
-const Companies: React.FC = () => {
+const Companies = () => {
   const { allCompanies, setCurrentPage, pages, currentPage, numberOfCompany } =
     useInformer();
+
+  const selectCurrentPage = React.useCallback((num: number) => {
+    setCurrentPage(num);
+  }, []);
 
   return (
     <>
@@ -26,11 +30,11 @@ const Companies: React.FC = () => {
           <span>{`${numberOfCompany || '...'} of results`}</span>
         </div>
         {allCompanies.map((el) => {
-          return <CompaniesCard key={el.id} props={el} />;
+          return <CompaniesCard key={el.id} companies={el} />;
         })}
         <div className={styles.pagination}>
           <Pagination
-            onChange={(_, num) => setCurrentPage(num)}
+            onChange={(_, num) => selectCurrentPage(num)}
             count={pages}
             page={currentPage}
           />

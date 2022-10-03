@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useInformer } from '../../utils';
+import { useInformer } from 'utils/index';
 
 import styles from './CompanyCard.module.scss';
 
@@ -25,7 +25,7 @@ const CompanyCard: React.FC = () => {
             <span>{company.status.keyword}</span>
           </div>
           <div className={styles.cardSpecialDescription}>
-            {company.general_data.special_description !== null
+            {company.general_data.special_description
               ? company.general_data.special_description.title
               : '--'}
           </div>

@@ -1,239 +1,292 @@
-.companiesCardLong {
-  height: 450px;
-  width: 1000px;
-  border: 1px solid rgb(191, 193, 197);
-  margin: 20px auto;
-  border-radius: 15px;
-  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-
-  &:hover {
-    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.3);
-    transform: translateY(-5px);
-  }
-  .cardMainInfo {
-    height: 150px;
-    margin: 30px 0px 0px 30px;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    .cardFoto {
-      width: 100px;
-      height: 100px;
-      background-color: rgb(123, 138, 168);
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+  .companiesCardLong {
+    min-height: 450px;
+    max-width: 1000px;
+    border: 1px solid rgb(191, 193, 197);
+    margin: 20px auto;
+    padding: 0px 10px 0px 10px;
+    border-radius: 15px;
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+    &:hover {
+      box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.3);
+      transform: translateY(-5px);
+    }
+    .cardMainInfo {
+      height: 150px;
+      margin: 30px 0px 0px 30px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      font-size: 30px;
-      cursor: pointer;
-    }
-    .cardTitle {
-      margin-left: 20px;
-      cursor: pointer;
-    }
-  }
-  .cardSecondInfo {
-    margin-left: 30px;
-    height: 210px;
-    display: flex;
-    justify-content: space-between;
-    li {
-      color: rgba(4, 169, 175, 1);
-    }
-    li > span {
       font-weight: bold;
-      color: black;
+      .cardFoto {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(123, 138, 168);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+      }
+      .cardTitle {
+        margin-left: 20px;
+        cursor: pointer;
+      }
     }
-    .images {
-      margin-left: 20px;
-    }
-    .leftColumn {
-      padding: 10px;
-      width: 310px;
+    .cardSecondInfo {
+      margin-left: 30px;
+      min-height: 210px;
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
-      .statusActive {
-        padding: 10px;
-        background: rgb(94, 255, 0);
-        color: rgb(255, 255, 255);
-        border-radius: 10px;
+      @media (max-width: 730px) {
+        font-size: 12px;
+        margin-left: 10px;
       }
-      .statusDeleted {
-        padding: 10px;
-        background: rgb(255, 0, 0);
-        color: rgb(255, 255, 255);
-        border-radius: 10px;
-      }
-    }
-    .midlColumn {
-      padding: 10px;
-      width: 310px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .rightColumn {
-      padding: 10px;
-      width: 310px;
-      display: flex;
-      .contacts {
-        color: rgba(4, 169, 175, 1);
-      }
-      .rightColumnList {
+      @media (max-width: 560px) {
+        font-size: 15px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        position: relative;
-        li {
-          cursor: pointer;
-          transition: all 0.1s linear;
-          opacity: 0.7;
-          &:hover {
-            opacity: 1;
-          }
-        }
-        .text {
-          width: 150px;
-          position: absolute;
-          margin-left: 10px;
-        }
       }
-      .rightColumnListElement {
-        cursor: not-allowed;
-        opacity: 0.2;
-      }
-    }
-  }
-  .founders {
-    margin-left: 20px;
-    width: 950px;
-    display: flex;
-    align-items: center;
-    height: 50px;
-    border-top: 1px solid rgb(191, 193, 197);
-    color: rgb(84, 93, 111);
-    span {
-      margin-left: 10px;
-      font-weight: bold;
-      color: black;
-    }
-  }
-  .foundersNon {
-    display: none;
-  }
-}
-.companiesCard {
-  height: 400px;
-  width: 1000px;
-  border: 1px solid rgb(191, 193, 197);
-  margin: 20px auto;
-  border-radius: 15px;
-  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-
-  &:hover {
-    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.3);
-    transform: translateY(-5px);
-  }
-  .cardMainInfo {
-    height: 150px;
-    margin: 30px 0px 0px 30px;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    .cardFoto {
-      width: 100px;
-      height: 100px;
-      background-color: rgb(123, 138, 168);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      cursor: pointer;
-    }
-    .cardTitle {
-      cursor: pointer;
-      margin-left: 20px;
-    }
-  }
-  .cardSecondInfo {
-    margin-left: 30px;
-    height: 210px;
-    display: flex;
-    justify-content: space-between;
-    li {
-      color: rgba(4, 169, 175, 1);
-    }
-    li > span {
-      font-weight: bold;
-      color: black;
-    }
-    .images {
-      margin-left: 20px;
-    }
-    .leftColumn {
-      padding: 10px;
-      width: 310px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      .statusActive {
-        padding: 10px;
-        color: rgb(255, 255, 255);
-        background: rgb(94, 255, 0);
-        border-radius: 10px;
-      }
-      .statusDeleted {
-        padding: 10px;
-        background: rgb(255, 0, 0);
-        color: rgb(255, 255, 255);
-        border-radius: 10px;
-      }
-    }
-    .midlColumn {
-      padding: 10px;
-      width: 310px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .rightColumn {
-      padding: 10px;
-      width: 310px;
-      display: flex;
-      .contacts {
+      li {
         color: rgba(4, 169, 175, 1);
       }
-      .rightColumnList {
+      li > span {
+        font-weight: bold;
+        color: black;
+      }
+      .images {
+        margin-left: 20px;
+      }
+      .leftColumn {
+        padding: 10px;
+        width: 33.333%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        position: relative;
-        li {
-          cursor: pointer;
-          transition: all 0.1s linear;
-          opacity: 0.7;
-          &:hover {
-            opacity: 1;
+        @media (max-width: 560px) {
+          width: 100%;
+          font-size: 12px;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+        .statusActive {
+          padding: 10px;
+          background: rgb(94, 255, 0);
+          color: rgb(255, 255, 255);
+          border-radius: 10px;
+        }
+        .statusDeleted {
+          padding: 10px;
+          background: rgb(255, 0, 0);
+          color: rgb(255, 255, 255);
+          border-radius: 10px;
+        }
+      }
+      .midlColumn {
+        padding: 10px;
+        width: 33.333%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        @media (max-width: 560px) {
+          width: 100%;
+          font-size: 12px;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+      }
+      .rightColumn {
+        padding: 10px;
+        width: 33.333%;
+        display: flex;
+        @media (max-width: 560px) {
+          width: 100%;
+          font-size: 12px;
+        }
+        .contacts {
+          color: rgba(4, 169, 175, 1);
+        }
+        .rightColumnList {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          position: relative;
+          @media (max-width: 560px) {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            position: relative;
+          }
+          li {
+            cursor: pointer;
+            transition: all 0.1s linear;
+            opacity: 0.7;
+            @media (max-width: 560px) {
+              padding-left: 60px;
+            }
+            &:hover {
+              opacity: 1;
+            }
+          }
+          .text {
+            width: 150px;
+            position: absolute;
+            margin-left: 10px;
+            @media (max-width: 560px) {
+              width: 100%;
+              position: absolute;
+              margin-top: 20px;
+            }
+          }
+          .elementHidden {
+            cursor: not-allowed;
+            opacity: 0.2;
+            &:hover {
+              opacity: 0.2;
+            }
           }
         }
-        .text {
-          width: 150px;
-          position: absolute;
-          margin-left: 10px;
-        }
-      }
-      .rightColumnListElement {
-        opacity: 0.2;
-        cursor: not-allowed;
       }
     }
+    .founders {
+      margin-left: 20px;
+      max-width: 950px;
+      display: flex;
+      align-items: center;
+      height: 50px;
+      border-top: 1px solid rgb(191, 193, 197);
+      color: rgb(84, 93, 111);
+      span {
+        margin-left: 10px;
+        font-weight: bold;
+        color: black;
+      }
+    }
+    .foundersNon {
+      display: none;
+    }
   }
-  .founders {
-    display: block;
-    height: 50px;
-    border-top: 1px solid rgb(191, 193, 197);
-  }
-  .foundersNon {
-    display: none;
+  .companiesCard {
+    min-height: 400px;
+    max-width: 1000px;
+    border: 1px solid rgb(191, 193, 197);
+    margin: 20px auto;
+    border-radius: 15px;
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+    &:hover {
+      box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.3);
+      transform: translateY(-5px);
+    }
+    .cardMainInfo {
+      height: 150px;
+      margin: 30px 0px 0px 30px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      .cardFoto {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(123, 138, 168);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+      }
+      .cardTitle {
+        cursor: pointer;
+        margin-left: 20px;
+      }
+    }
+    .cardSecondInfo {
+      margin-left: 30px;
+      min-height: 210px;
+      display: flex;
+      justify-content: space-between;
+      li {
+        color: rgba(4, 169, 175, 1);
+      }
+      li > span {
+        font-weight: bold;
+        color: black;
+      }
+      .images {
+        margin-left: 20px;
+      }
+      .leftColumn {
+        padding: 10px;
+        width: 33.333%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .statusActive {
+          padding: 10px;
+          color: rgb(255, 255, 255);
+          background: rgb(94, 255, 0);
+          border-radius: 10px;
+        }
+        .statusDeleted {
+          padding: 10px;
+          background: rgb(255, 0, 0);
+          color: rgb(255, 255, 255);
+          border-radius: 10px;
+        }
+      }
+      .midlColumn {
+        padding: 10px;
+        width: 33.333%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .rightColumn {
+        padding: 10px;
+        width: 33.333%;
+        display: flex;
+        .contacts {
+          color: rgba(4, 169, 175, 1);
+        }
+        .rightColumnList {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          position: relative;
+          li {
+            cursor: pointer;
+            transition: all 0.1s linear;
+            opacity: 0.7;
+            &:hover {
+              opacity: 1;
+            }
+          }
+          .text {
+            width: 150px;
+            position: absolute;
+            margin-left: 10px;
+          }
+          .elementHidden {
+            cursor: not-allowed;
+            opacity: 0.2;
+            &:hover {
+              opacity: 0.2;
+            }
+          }
+        }
+      }
+    }
+    .founders {
+      display: block;
+      height: 50px;
+      border-top: 1px solid rgb(191, 193, 197);
+    }
+    .foundersNon {
+      display: none;
+    }
   }
 }

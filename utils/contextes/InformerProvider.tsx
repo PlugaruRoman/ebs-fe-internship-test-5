@@ -30,11 +30,6 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
     setSearch(value);
   };
 
-  const selectCompany = (el: Companies) => {
-    setSelectedCompany(el);
-    setSearch('');
-  };
-
   const searchCompanies = () => {
     setAllCompanies(allCompanies);
     setPrevCompanies((prev) => !prev);
@@ -104,10 +99,11 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
   const value = React.useMemo(
     () => ({
       onSearch,
-      selectCompany,
       searchCompanies,
       setCurrentPage,
       changeModalState,
+      setSelectedCompany,
+      setSearch,
       search,
       foundCompanies,
       selectedCompany,
@@ -120,10 +116,11 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
     }),
     [
       onSearch,
-      selectCompany,
       searchCompanies,
       setCurrentPage,
       changeModalState,
+      setSelectedCompany,
+      setSearch,
       search,
       foundCompanies,
       selectedCompany,

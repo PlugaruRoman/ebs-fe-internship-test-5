@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useInformer } from '../../utils';
+import { useInformer } from 'utils/index';
 
 import styles from './CompanyNav.module.scss';
 

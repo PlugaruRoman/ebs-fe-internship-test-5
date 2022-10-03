@@ -4,14 +4,14 @@ import Link from 'next/link';
 
 import styles from './Header.module.scss';
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <div className={styles.header}>
-      <h1>
+      <div className={styles.logo}>
         <Link href={'/'}>
           <a>informer</a>
         </Link>
-      </h1>
+      </div>
     </div>
   );
 };

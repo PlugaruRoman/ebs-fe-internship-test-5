@@ -1,24 +1,32 @@
+import React from 'react';
+
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { useInformer } from '../../utils/contextes/useInformer';
+import { useInformer } from 'utils/index';
 
 import styles from './SearchBar.module.scss';
 
-import searcher from '../../public/searcher.svg';
+import searcher from 'public/searcher.svg';
 
-const SearchBar = () => {
+const SearchBar: React.FC = () => {
   const {
     onSearch,
     searchCompanies,
-    selectCompany,
+    setSearch,
+    setSelectedCompany,
     search,
     foundCompanies,
     numberOfCompany,
   } = useInformer();
 
+  const selectCompany = React.useCallback((el: Companies) => {
+    setSelectedCompany(el);
+    setSearch('');
+  }, []);
+
   return (
-    <>
+    <div className={styles.content}>
       <div className={styles.searchBar}>
         <input
           className={
@@ -51,7 +59,7 @@ const SearchBar = () => {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
