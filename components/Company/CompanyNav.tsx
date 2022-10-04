@@ -7,7 +7,7 @@ import styles from './CompanyNav.module.scss';
 const CompanyNav: React.FC = () => {
   const { changeModalState } = useInformer();
   return (
-    <div>
+    <div className={styles.content}>
       <ul className={styles.menu}>
         <li className={styles.active}>General dates</li>
         <li onClick={changeModalState}>Personal</li>

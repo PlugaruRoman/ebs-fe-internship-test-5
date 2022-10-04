@@ -1,15 +1,29 @@
 .contentCard {
-  width: 1200px;
-  height: 600px;
+  max-width: 1200px;
+  min-height: 600px;
+  padding: 10px;
   .upColumn {
     display: flex;
     justify-content: space-between;
+    @media (max-width: 500px) {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
     .column {
       color: rgb(123, 138, 168);
       width: 33.3%;
-      height: 150px;
+      min-height: 150px;
       border-radius: 5px;
       background: rgb(255, 255, 255);
+      @media (max-width: 500px) {
+        margin: 0 auto;
+        width: 300px;
+        padding: 10px;
+      }
+      @media (max-width: 320px) {
+        max-width: 200px;
+      }
       h3 {
         margin: 30px 0px 0px 40px;
       }
@@ -25,11 +39,18 @@
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 500px) {
+      display: flex;
+      flex-direction: column;
+    }
     .leftColumn {
       border-radius: 5px;
       width: 49%;
       min-height: 250px;
       background: rgb(255, 255, 255);
+      @media (max-width: 500px) {
+        width: 100%;
+      }
       .title {
         margin: 20px 0px 0px 20px;
         font-weight: normal;
@@ -106,6 +127,9 @@
       width: 49%;
       min-height: 250px;
       background: rgb(255, 255, 255);
+      @media (max-width: 500px) {
+        width: 100%;
+      }
     }
   }
 }

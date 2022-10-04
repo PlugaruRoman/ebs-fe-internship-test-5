@@ -7,12 +7,14 @@ import CompanyNav from 'components/Company/CompanyNav';
 import CompanyInfo from 'components/Company/CompanyInfo';
 import Modal from 'components/Modal/Modal';
 
+import styles from '../styles/Home.module.scss';
+
 const Company = () => {
   const { company } = useInformer();
 
   if (company) {
     return (
-      <div>
+      <div className={styles.content}>
         <Modal />
         <CompanyCard />
         <CompanyNav />

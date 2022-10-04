@@ -21,7 +21,6 @@ const MyAwesomeMap = dynamic(() => import('../OpenMap/OpenStreetMap'), {
 
 const CompanyInfo: React.FC = () => {
   const { company, changeModalState } = useInformer();
-
   return (
     <div className={styles.contentCard}>
       <div className={styles.upColumn}>

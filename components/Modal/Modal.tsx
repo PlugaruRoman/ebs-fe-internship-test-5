@@ -8,20 +8,23 @@ import { useInformer } from 'utils/index';
 import styles from './Modal.module.scss';
 
 import close from 'public/close.png';
+import { DivOverlay } from 'leaflet';
 
 const Modal: React.FC = () => {
   const { modalActive, changeModalState } = useInformer();
 
   return (
-    <div className={modalActive ? styles.modalActive : styles.modal}>
-      <div className={styles.modalContent}>
-        <div onClick={changeModalState} className={styles.closeImg}>
-          <Image width={20} height={20} src={close} />
+    <div className={styles.content}>
+      <div className={modalActive ? styles.modalActive : styles.modal}>
+        <div className={styles.modalContent}>
+          <div onClick={changeModalState} className={styles.closeImg}>
+            <Image width={20} height={20} src={close} />
+          </div>
+          <h3>This information is only available to subscribed users</h3>
+          <Link href={'https://informer.md/en/ab/subscription'}>
+            <button>View products</button>
+          </Link>
         </div>
-        <h3>This information is only available to subscribed users</h3>
-        <Link href={'https://informer.md/en/ab/subscription'}>
-          <button>View products</button>
-        </Link>
       </div>
     </div>
   );

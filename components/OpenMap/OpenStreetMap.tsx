@@ -13,29 +13,25 @@ const OpenStreetMap: React.FC = () => {
   const { company } = useInformer();
 
   const mapRef = React.useRef();
-
+  React.useEffect(() => {});
   return (
     <div>
       <div>
         <MapContainer
           ref={mapRef}
           center={[
-            company.general_data.contact_info.address_de_facto.title !== null &&
             company.general_data.contact_info.address_de_facto.additional !==
               null &&
-            company.general_data.contact_info.address_de_facto.additional
-              .lat !== null
-              ? company.general_data.contact_info.address_de_facto.additional
-                  .lat
-              : 47.00367,
-            company.general_data.contact_info.address_de_facto.title !== null &&
+              company.general_data.contact_info.address_de_facto.additional
+                .lat !== null &&
+              company.general_data.contact_info.address_de_facto.additional.lat,
+
             company.general_data.contact_info.address_de_facto.additional !==
               null &&
-            company.general_data.contact_info.address_de_facto.additional
-              .long !== null
-              ? company.general_data.contact_info.address_de_facto.additional
-                  .long
-              : 28.907089,
+              company.general_data.contact_info.address_de_facto.additional
+                .long !== null &&
+              company.general_data.contact_info.address_de_facto.additional
+                .long,
           ]}
           zoom={13}
         >
@@ -44,16 +40,11 @@ const OpenStreetMap: React.FC = () => {
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
           />
 
-          {company.general_data.contact_info.address_de_facto.title !== null &&
-            company.general_data.contact_info.address_de_facto.additional !==
-              null &&
+          {company.general_data.contact_info.address_de_facto.additional &&
+            company.general_data.contact_info.address_de_facto.additional.lat &&
+            company.general_data.contact_info.address_de_facto.additional &&
             company.general_data.contact_info.address_de_facto.additional
-              .lat !== null &&
-            company.general_data.contact_info.address_de_facto.title !== null &&
-            company.general_data.contact_info.address_de_facto.additional !==
-              null &&
-            company.general_data.contact_info.address_de_facto.additional
-              .long !== null && (
+              .long && (
               <Marker
                 position={[
                   company.general_data.contact_info.address_de_facto.additional
@@ -63,9 +54,7 @@ const OpenStreetMap: React.FC = () => {
                 ]}
               >
                 <Popup>
-                  {company.general_data.contact_info.address_de_facto.title
-                    ? company.general_data.contact_info.address_de_facto.title
-                    : ''}
+                  {company.general_data.contact_info.address_de_facto.title}
                 </Popup>
               </Marker>
             )}
