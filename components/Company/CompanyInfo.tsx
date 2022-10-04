@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
-import { useInformer } from 'utils/index';
+import { useInformer } from 'context/index';
 
 import 'leaflet/dist/leaflet.css';
 

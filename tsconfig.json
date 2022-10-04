@@ -4,7 +4,6 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
@@ -17,9 +16,10 @@
     "baseUrl": "ebs-fe-internship-test-5",
     "paths": {
       "components/*": ["../components/*"],
-      "utils/*": ["../utils/*"],
+      "context/*": ["../context/*"],
       "public/*": ["../public/*"],
-      "styles/*": ["../styles/*"]
+      "styles/*": ["../styles/*"],
+      "types/*": ["../types/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src"],

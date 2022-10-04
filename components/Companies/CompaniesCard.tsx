@@ -3,7 +3,9 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { useInformer } from 'utils/index';
+import { useInformer } from 'context/index';
+
+import Companies from 'types/companiesType';
 
 import styles from './CompaniesCard.module.scss';
 
@@ -17,7 +19,8 @@ interface AllCompanies {
 }
 
 const CompaniesCard: React.FC<AllCompanies> = ({ companies }) => {
-  const { changeModalState, setSelectedCompany, setSearch } = useInformer();
+  const { changeModalState, setSelectedCompany, setSearch, company } =
+    useInformer();
 
   const selectCompany = React.useCallback((el: Companies) => {
     setSelectedCompany(el);
@@ -73,7 +76,10 @@ const CompaniesCard: React.FC<AllCompanies> = ({ companies }) => {
               Date of establishment:<span> {companies.creation_year} </span>
             </li>
             <li>
-              Age:<span> {2022 - companies.creation_year} years</span>
+              Age:
+              <span>
+                {new Date().getFullYear() - companies.creation_year} years
+              </span>
             </li>
           </ul>
           <ul className={styles.midlColumn}>

@@ -4,6 +4,9 @@ import axios from 'axios';
 
 import { InformerContext } from './InformerContext';
 
+import Companies from 'types/companiesType';
+import Company from 'types/companyType';
+
 interface InformerProviderProps {
   children: React.ReactNode;
 }
@@ -85,7 +88,7 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
       if (selectedCompany) {
         try {
           const companyResponse = await axios.get(
-            `https://app.informer.md/api/public/company?slug=${selectedCompany.slug}`
+            `https://app.informer.md/api/public/company?id=${selectedCompany.id}`
           );
           setCompany(companyResponse.data);
         } catch (error) {

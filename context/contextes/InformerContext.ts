@@ -1,5 +1,8 @@
 import React from 'react';
 
+import Companies from 'types/companiesType';
+import Company from 'types/companyType';
+
 export interface InformerContextProps {
   onSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
   searchCompanies: () => void;

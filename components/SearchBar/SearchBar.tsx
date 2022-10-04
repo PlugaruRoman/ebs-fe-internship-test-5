@@ -3,7 +3,9 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { useInformer } from 'utils/index';
+import { useInformer } from 'context/index';
+
+import Companies from 'types/companiesType';
 
 import styles from './SearchBar.module.scss';
 

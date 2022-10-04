@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useInformer } from 'utils/index';
+import { useInformer } from 'context/index';
 
 import styles from './CompanyCard.module.scss';
 

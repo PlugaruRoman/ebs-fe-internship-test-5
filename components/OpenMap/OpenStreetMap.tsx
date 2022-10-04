@@ -2,7 +2,7 @@ import React from 'react';
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-import { useInformer } from 'utils/index';
+import { useInformer } from 'context/index';
 
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
 import 'leaflet-defaulticon-compatibility';
