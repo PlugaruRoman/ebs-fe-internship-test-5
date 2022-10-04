@@ -22,7 +22,7 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
   const [pages, setPages] = React.useState();
   const [currentPage, setCurrentPage] = React.useState(1);
 
-  const [prevCompanies, setPrevCompanies] = React.useState(false);
+  const [searchState, setSearchState] = React.useState(false);
   const [modalActive, setModalActive] = React.useState(false);
 
   const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +32,7 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
 
   const searchCompanies = () => {
     setAllCompanies(allCompanies);
-    setPrevCompanies((prev) => !prev);
+    setSearchState((prev) => !prev);
     setCurrentPage(1);
   };
 
@@ -78,7 +78,7 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
       }
     }
     fetchData();
-  }, [currentPage, , pages, prevCompanies]);
+  }, [currentPage, , pages, searchState]);
 
   React.useEffect(() => {
     async function fetchData() {
