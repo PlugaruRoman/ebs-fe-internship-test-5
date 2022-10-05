@@ -15,8 +15,13 @@ import styles from 'styles/Home.module.scss';
 import results from 'public/results.png';
 
 const Companies = () => {
-  const { allCompanies, setCurrentPage, pages, currentPage, numberOfCompany } =
-    useInformer();
+  const {
+    allCompanies,
+    setCurrentPage,
+    pages,
+    currentPage,
+    totalCompanyNumber,
+  } = useInformer();
 
   const selectCurrentPage = React.useCallback((num: number) => {
     setCurrentPage(num);
@@ -29,7 +34,7 @@ const Companies = () => {
         <div className={styles.content}>
           <div className={styles.numberOfCompanies}>
             <Image height={20} width={20} src={results} alt='results' />
-            <span>{`${numberOfCompany || '...'} of results`}</span>
+            <span>{`${totalCompanyNumber || '...'} of results`}</span>
           </div>
           {allCompanies.map((el) => {
             return <CompaniesCard key={el.id} companies={el} />;

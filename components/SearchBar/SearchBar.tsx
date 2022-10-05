@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import { useInformer } from 'context/index';
 
-import Companies from 'types/companiesType';
+import Companies from 'types/companies';
 
 import styles from './SearchBar.module.scss';
 
@@ -19,7 +19,7 @@ const SearchBar: React.FC = () => {
     setSelectedCompany,
     search,
     foundCompanies,
-    numberOfCompany,
+    totalCompanyNumber,
   } = useInformer();
 
   const selectCompany = React.useCallback((el: Companies) => {
@@ -35,7 +35,7 @@ const SearchBar: React.FC = () => {
             search ? styles.searchBarInputActive : styles.searchBarInput
           }
           type='text'
-          placeholder={`Search from ${numberOfCompany || '...'} Companies`}
+          placeholder={`Search from ${totalCompanyNumber || '...'} Companies`}
           onChange={onSearch}
           value={search}
         />
@@ -43,13 +43,13 @@ const SearchBar: React.FC = () => {
         {search &&
           foundCompanies.map((el) => {
             return (
-              <Link key={el.id} href={'/company'}>
-                <div
+              <Link key={el.id} href={'/company/[id]'} as={`/company/${el.id}`}>
+                <a
                   className={styles.foundCompany}
                   onClick={() => selectCompany(el)}
                 >
                   {el.name} {el.idno}
-                </div>
+                </a>
               </Link>
             );
           })}

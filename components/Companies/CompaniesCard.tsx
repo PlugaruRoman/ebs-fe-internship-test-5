@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { useInformer } from 'context/index';
 
-import Companies from 'types/companiesType';
+import Companies from 'types/companies';
 
 import styles from './CompaniesCard.module.scss';
 
@@ -19,10 +19,9 @@ interface AllCompanies {
 }
 
 const CompaniesCard: React.FC<AllCompanies> = ({ companies }) => {
-  const { changeModalState, setSelectedCompany, setSearch, company } =
-    useInformer();
+  const { changeModalState, setSelectedCompany, setSearch } = useInformer();
 
-  const selectCompany = React.useCallback((el: Companies) => {
+  const selectCompany = useCallback((el: Companies) => {
     setSelectedCompany(el);
     setSearch('');
   }, []);
@@ -36,10 +35,7 @@ const CompaniesCard: React.FC<AllCompanies> = ({ companies }) => {
             : styles.companiesCard
         }
       >
-        <div
-          onClick={() => selectCompany(companies)}
-          className={styles.cardMainInfo}
-        >
+        <div className={styles.cardMainInfo}>
           <div className={styles.cardFoto}>
             {companies.name
               .split(/[\s,.-]+/)
@@ -48,8 +44,8 @@ const CompaniesCard: React.FC<AllCompanies> = ({ companies }) => {
               .join('')}
           </div>
           <div className={styles.cardTitle}>
-            <Link href={'/company'}>
-              <a>{companies.name}</a>
+            <Link href={'/company/[id]'} as={`/company/${companies.id}`}>
+              <a onClick={() => selectCompany(companies)}>{companies.name}</a>
             </Link>
             <div>{companies.location}</div>
           </div>

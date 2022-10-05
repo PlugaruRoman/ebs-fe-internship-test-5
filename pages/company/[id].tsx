@@ -8,7 +8,7 @@ import CompanyInfo from 'components/Company/CompanyInfo';
 import Modal from 'components/Modal/Modal';
 import Layout from 'components/Layout';
 
-import styles from '../styles/Home.module.scss';
+import styles from 'styles/Home.module.scss';
 
 const Company = () => {
   const { company } = useInformer();

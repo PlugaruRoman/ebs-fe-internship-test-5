@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import NextNProgress from 'nextjs-progressbar';
 
 import { InformerProvider } from 'context/contextes';
 
@@ -16,6 +17,7 @@ const MyApp = ({ Component, pageProps }) => {
           integrity='sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14='
         />
       </Head>
+      <NextNProgress />
       <Component {...pageProps} />
     </InformerProvider>
   );

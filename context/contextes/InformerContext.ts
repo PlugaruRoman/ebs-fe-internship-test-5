@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Companies from 'types/companiesType';
-import Company from 'types/companyType';
+import Companies from 'types/companies';
+import Company from 'types/company';
 
 export interface InformerContextProps {
   onSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -12,9 +12,9 @@ export interface InformerContextProps {
   setSearch: React.Dispatch<React.SetStateAction<string>>;
   search: string | null;
   foundCompanies: Companies[];
-  selectedCompany: Companies | null;
+  selectedCompany: Companies;
   company: Company | null;
-  numberOfCompany: string | undefined;
+  totalCompanyNumber: number;
   allCompanies: Companies[];
   pages: number;
   currentPage: number;
@@ -32,7 +32,7 @@ export const InformerContext = React.createContext<InformerContextProps>({
   foundCompanies: [],
   selectedCompany: null,
   company: null,
-  numberOfCompany: undefined,
+  totalCompanyNumber: 0,
   allCompanies: [],
   pages: 0,
   currentPage: 0,

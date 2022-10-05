@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -15,13 +19,31 @@
     "jsx": "preserve",
     "baseUrl": "ebs-fe-internship-test-5",
     "paths": {
-      "components/*": ["../components/*"],
-      "context/*": ["../context/*"],
-      "public/*": ["../public/*"],
-      "styles/*": ["../styles/*"],
-      "types/*": ["../types/*"]
-    }
+      "components/*": [
+        "../components/*"
+      ],
+      "context/*": [
+        "../context/*"
+      ],
+      "public/*": [
+        "../public/*"
+      ],
+      "styles/*": [
+        "../styles/*"
+      ],
+      "types/*": [
+        "../types/*"
+      ]
+    },
+    "strict": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

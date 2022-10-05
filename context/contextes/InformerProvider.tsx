@@ -2,28 +2,28 @@ import React from 'react';
 
 import axios from 'axios';
 
+import { useRouter } from 'next/router';
+
 import { InformerContext } from './InformerContext';
 
-import Companies from 'types/companiesType';
-import Company from 'types/companyType';
-
-interface InformerProviderProps {
-  children: React.ReactNode;
-}
+import Companies from 'types/companies';
+import Company from 'types/company';
+import InformerProviderProps from 'types/informerProviderProps';
 
 export const InformerProvider: React.FC<InformerProviderProps> = ({
   children,
 }) => {
   const [search, setSearch] = React.useState('');
   const [foundCompanies, setFoundCompanies] = React.useState<Companies[]>();
-  const [selectedCompany, setSelectedCompany] = React.useState<Companies>();
-  const [company, setCompany] = React.useState<Company>();
 
   const [totalCompanyNumber, setTotalCompanyNumber] = React.useState();
   const [allCompanies, setAllCompanies] = React.useState<Companies[]>([]);
 
   const [pages, setPages] = React.useState();
   const [currentPage, setCurrentPage] = React.useState(1);
+
+  const [selectedCompany, setSelectedCompany] = React.useState<Companies>();
+  const [company, setCompany] = React.useState<Company>();
 
   const [searchState, setSearchState] = React.useState(false);
   const [modalActive, setModalActive] = React.useState(false);
@@ -33,19 +33,12 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
     setSearch(value);
   };
 
+  const { query } = useRouter();
+
   const searchCompanies = () => {
-    setAllCompanies(allCompanies);
     setSearchState((prev) => !prev);
     setCurrentPage(1);
   };
-
-  let numberOfCompany: string;
-  function numberWithCommas(x: any) {
-    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
-  }
-  if (totalCompanyNumber !== undefined) {
-    numberOfCompany = numberWithCommas(totalCompanyNumber);
-  }
 
   const changeModalState = (): void => {
     setModalActive((prev) => !prev);
@@ -58,7 +51,11 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
           `https://app.informer.md/api/public/search?page=1&per_page=5&company_name=${search}`
         );
         setFoundCompanies(searchCompanyResponse.data.data);
-        setTotalCompanyNumber(searchCompanyResponse.data.total_results);
+        setTotalCompanyNumber(
+          searchCompanyResponse.data.total_results
+            .toString()
+            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')
+        );
       } catch (error) {
         alert('Error');
       }
@@ -85,10 +82,10 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
 
   React.useEffect(() => {
     async function fetchData() {
-      if (selectedCompany) {
+      if (query.id) {
         try {
           const companyResponse = await axios.get(
-            `https://app.informer.md/api/public/company?id=${selectedCompany.id}`
+            `https://app.informer.md/api/public/company?id=${query.id}`
           );
           setCompany(companyResponse.data);
         } catch (error) {
@@ -97,7 +94,7 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
       }
     }
     fetchData();
-  }, [selectedCompany]);
+  }, [query.id, selectedCompany]);
 
   const value = React.useMemo(
     () => ({
@@ -111,11 +108,11 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
       foundCompanies,
       selectedCompany,
       company,
-      numberOfCompany,
       allCompanies,
       pages,
       currentPage,
       modalActive,
+      totalCompanyNumber,
     }),
     [
       onSearch,
@@ -128,11 +125,11 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
       foundCompanies,
       selectedCompany,
       company,
-      numberOfCompany,
       allCompanies,
       pages,
       currentPage,
       modalActive,
+      totalCompanyNumber,
     ]
   );
   return (
