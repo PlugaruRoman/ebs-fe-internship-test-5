@@ -9,12 +9,22 @@ const CompanyNav: React.FC = () => {
   return (
     <div className={styles.content}>
       <ul className={styles.menu}>
-        <li className={styles.active}>General dates</li>
-        <li onClick={changeModalState}>Personal</li>
-        <li onClick={changeModalState}>Subdivisions</li>
-        <li onClick={changeModalState}>Economic Data</li>
-        <li onClick={changeModalState}>Publications</li>
-        <li onClick={changeModalState}>Legal data</li>
+        <li className={styles.activeListElem}>General dates</li>
+        <li className={styles.listElem} onClick={changeModalState}>
+          Personal
+        </li>
+        <li className={styles.listElem} onClick={changeModalState}>
+          Subdivisions
+        </li>
+        <li className={styles.listElem} onClick={changeModalState}>
+          Economic Data
+        </li>
+        <li className={styles.listElem} onClick={changeModalState}>
+          Publications
+        </li>
+        <li className={styles.listElem} onClick={changeModalState}>
+          Legal data
+        </li>
       </ul>
     </div>
   );

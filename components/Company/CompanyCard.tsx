@@ -22,7 +22,9 @@ const CompanyCard: React.FC = () => {
         <div className={styles.cardTitle}>
           <div className={styles.cardName}>
             {company.name}
-            <span>{company.status.keyword}</span>
+            <span className={styles.statusKeyword}>
+              {company.status.keyword}
+            </span>
           </div>
           <div className={styles.cardSpecialDescription}>
             {company.general_data.special_description

@@ -25,43 +25,45 @@ const CompanyInfo: React.FC = () => {
     <div className={styles.contentCard}>
       <div className={styles.upColumn}>
         <div className={styles.column}>
-          <h3>IDNO</h3>
-          <div className={styles.bold}>{company.general_data.idno}</div>
+          <h3 className={styles.titleColumn}>IDNO</h3>
+          <div className={styles.textColumn}>{company.general_data.idno}</div>
         </div>
         <div className={styles.column}>
-          <h3>Registration year</h3>
-          <div className={styles.bold}>
+          <h3 className={styles.titleColumn}>Registration year</h3>
+          <div className={styles.textColumn}>
             {company.general_data.creation_year}
           </div>
         </div>
         <div className={styles.column}>
-          <h3>Staff</h3>
-          <div className={styles.bold}>{company.general_data.size.name}</div>
+          <h3 className={styles.titleColumn}>Staff</h3>
+          <div className={styles.textColumn}>
+            {company.general_data.size.name}
+          </div>
         </div>
       </div>
       <div className={styles.downColumn}>
-        <div className={styles.leftColumn}>
-          <h3 className={styles.title}>Contact information</h3>
-          <div className={styles.infoColumn}>
-            <div className={styles.left}>
-              <div className={styles.email}>
-                EMAIL:
+        <div className={styles.leftDownColumn}>
+          <h3 className={styles.titleDownColumn}>Contact information</h3>
+          <div className={styles.infoDownColumn}>
+            <div className={styles.contactList}>
+              EMAIL:
+              <div className={styles.contact}>
                 {company.general_data.contact_info.emails.length > 0 ? (
-                  <div onClick={changeModalState} className={styles.emailFlex}>
+                  <div onClick={changeModalState} className={styles.contactRow}>
                     <Image height={20} width={20} src={mail} />
-                    <span>Email</span>
+                    <span className={styles.contactName}>Email</span>
                   </div>
                 ) : (
                   ''
                 )}
               </div>
-              <div className={styles.web}>
+              <div className={styles.websiteInfo}>
                 WEBSITE:
                 <div>
                   {company.general_data.contact_info.sites.length > 0 &&
                     company.general_data.contact_info.sites.map((el) => {
                       return (
-                        <div className={styles.linkRow} key={el}>
+                        <div className={styles.webLinkRow} key={el}>
                           <Link href={el}>
                             <a className={styles.webLink}>{el}</a>
                           </Link>
@@ -71,13 +73,13 @@ const CompanyInfo: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className={styles.right}>
+            <div className={styles.contactList}>
               PHONE/CELL PHONE/FAX:
               <div className={styles.contact}>
                 {company.general_data.contact_info.phones.length > 0 ? (
                   <div onClick={changeModalState} className={styles.contactRow}>
                     <Image height={20} width={20} src={phone} />
-                    <span>Phone</span>
+                    <span className={styles.contactName}>Phone</span>
                   </div>
                 ) : (
                   ''
@@ -87,7 +89,7 @@ const CompanyInfo: React.FC = () => {
                 {company.general_data.contact_info.mobile.length > 0 ? (
                   <div onClick={changeModalState} className={styles.contactRow}>
                     <Image height={20} width={20} src={mobile} />
-                    <span>Mobile phone</span>
+                    <span className={styles.contactName}>Mobile phone</span>
                   </div>
                 ) : (
                   ''
@@ -97,7 +99,7 @@ const CompanyInfo: React.FC = () => {
                 {company.general_data.contact_info.faxes.length > 0 ? (
                   <div onClick={changeModalState} className={styles.contactRow}>
                     <Image height={20} width={20} src={fax} />
-                    <span>Fax</span>
+                    <span className={styles.contactName}>Fax</span>
                   </div>
                 ) : (
                   ''
@@ -106,7 +108,7 @@ const CompanyInfo: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className={styles.map}>
+        <div className={styles.mapContainer}>
           <MyAwesomeMap />
         </div>
       </div>

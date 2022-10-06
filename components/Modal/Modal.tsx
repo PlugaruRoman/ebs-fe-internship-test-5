@@ -21,7 +21,7 @@ const Modal: React.FC = () => {
           </div>
           <h3>This information is only available to subscribed users</h3>
           <Link href={'https://informer.md/en/ab/subscription'}>
-            <a>View products</a>
+            <a className={styles.linkButton}>View products</a>
           </Link>
         </div>
       </div>

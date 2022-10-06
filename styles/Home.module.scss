@@ -8,17 +8,23 @@
   min-height: 86vh;
 }
 
+.content {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
 .pagination {
   display: flex;
   justify-content: center;
 }
 
 .numberOfCompanies {
-  font-size: 20px;
-  span {
-    margin-left: 10px;
-    font-weight: bold;
-  }
+  padding-left: 20px;
+}
+
+.totalCompanyNumber {
+  margin-left: 10px;
+  font-weight: bold;
 }
 
 .homeText {
@@ -26,12 +32,4 @@
   margin: 0 auto;
   text-align: center;
   padding: 0px 10px 0px 10px;
-}
-
-.content {
-  margin: 0 auto;
-  max-width: 1200px;
-  .numberOfCompanies {
-    padding-left: 20px;
-  }
 }

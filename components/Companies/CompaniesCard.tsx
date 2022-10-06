@@ -28,15 +28,9 @@ const CompaniesCard: React.FC<AllCompanies> = ({ companies }) => {
 
   return (
     <div className={styles.content}>
-      <div
-        className={
-          companies.partners.length > 0
-            ? styles.companiesCardLong
-            : styles.companiesCard
-        }
-      >
+      <div className={styles.companiesCard}>
         <div className={styles.cardMainInfo}>
-          <div className={styles.cardFoto}>
+          <div className={styles.cardPhoto}>
             {companies.name
               .split(/[\s,.-]+/)
               .filter((word: string) => word.length > 3)
@@ -53,10 +47,11 @@ const CompaniesCard: React.FC<AllCompanies> = ({ companies }) => {
 
         <div className={styles.cardSecondInfo}>
           <ul className={styles.leftColumn}>
-            <li>
-              IDNO: <span> {companies.idno} </span>
+            <li className={styles.columnEl}>
+              IDNO:
+              <span className={styles.columnEltext}>{companies.idno}</span>
             </li>
-            <li>
+            <li className={styles.columnEl}>
               STATUS:
               <span
                 className={
@@ -68,74 +63,95 @@ const CompaniesCard: React.FC<AllCompanies> = ({ companies }) => {
                 {companies.status}
               </span>
             </li>
-            <li>
-              Date of establishment:<span> {companies.creation_year} </span>
+            <li className={styles.columnEl}>
+              Date of establishment:
+              <span className={styles.columnEltext}>
+                {companies.creation_year}
+              </span>
             </li>
-            <li>
+            <li className={styles.columnEl}>
               Age:
-              <span>
+              <span className={styles.columnEltext}>
                 {new Date().getFullYear() - companies.creation_year} years
               </span>
             </li>
           </ul>
           <ul className={styles.midlColumn}>
-            <li>
+            <li className={styles.columnEl}>
               Nr. by the employees:
-              <span> {companies.employees ? companies.employees : '---'}</span>
+              <span className={styles.columnEltext}>
+                {companies.employees ? companies.employees : '---'}
+              </span>
             </li>
-            <li>
+            <li className={styles.columnEl}>
               Turnover :
-              <span>
+              <span className={styles.columnEltext}>
                 {companies.turnover ? ` ${companies.turnover}  MLD` : '---'}
               </span>
             </li>
-            <li>
+            <li className={styles.columnEl}>
               Industry :
-              <span> {companies.industry ? companies.industry : '---'}</span>
+              <span className={styles.columnEltext}>
+                {companies.industry ? companies.industry : '---'}
+              </span>
             </li>
           </ul>
           <div className={styles.rightColumn}>
-            <div className={styles.contacts}> Contacts: </div>
+            <div className={styles.rigtColumnTitle}> Contacts: </div>
             <ul className={styles.rightColumnList}>
               <li
                 onClick={changeModalState}
-                className={companies.mobile ? '' : styles.elementHidden}
+                className={
+                  companies.mobile ? styles.contactActive : styles.contactHidden
+                }
               >
                 <Image height={20} width={20} src={mobile} alt='mobile' />
-                <span className={styles.text}>Phone mobile</span>
+                <span className={styles.contactName}>Phone mobile</span>
               </li>
               <li
                 onClick={changeModalState}
-                className={companies.phone ? '' : styles.elementHidden}
+                className={
+                  companies.phone ? styles.contactActive : styles.contactHidden
+                }
               >
                 <Image height={20} width={20} src={phone} alt='phone' />
-                <span className={styles.text}>Phone</span>
+                <span className={styles.contactName}>Phone</span>
               </li>
               <li
                 onClick={changeModalState}
-                className={companies.email ? '' : styles.elementHidden}
+                className={
+                  companies.email ? styles.contactActive : styles.contactHidden
+                }
               >
                 <Image height={20} width={20} src={mail} alt='email' />
-                <span className={styles.text}>Email</span>
+                <span className={styles.contactName}>Email</span>
               </li>
               <li
                 onClick={changeModalState}
-                className={companies.website ? '' : styles.elementHidden}
+                className={
+                  companies.website
+                    ? styles.contactActive
+                    : styles.contactHidden
+                }
               >
                 <Image height={20} width={20} src={website} alt='website' />
-                <span className={styles.text}>Website</span>
+                <span className={styles.contactName}>Website</span>
               </li>
             </ul>
           </div>
         </div>
         <div
           className={
-            companies.partners.length > 0 ? styles.founders : styles.foundersNon
+            companies.partners.length > 0
+              ? styles.founders
+              : styles.foundersNone
           }
         >
           Founders of the company:
           {companies.partners.map((el: string) => (
-            <span key={el}>{el}</span>
+            <span className={styles.founder} key={el}>
+              {el}
+            </span>
           ))}
         </div>
       </div>

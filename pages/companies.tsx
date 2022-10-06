@@ -34,7 +34,9 @@ const Companies = () => {
         <div className={styles.content}>
           <div className={styles.numberOfCompanies}>
             <Image height={20} width={20} src={results} alt='results' />
-            <span>{`${totalCompanyNumber || '...'} of results`}</span>
+            <span className={styles.totalCompanyNumber}>{`${
+              totalCompanyNumber || '...'
+            } of results`}</span>
           </div>
           {allCompanies.map((el) => {
             return <CompaniesCard key={el.id} companies={el} />;
