@@ -1,23 +1,18 @@
 import React from 'react';
-
-import { useInformer } from 'context/index';
+import CompanyProps from 'types/companyprops';
 
 import styles from './CompanyCard.module.scss';
 
-const CompanyCard: React.FC = () => {
-  const { company } = useInformer();
-
+const CompanyCard: React.FC<CompanyProps> = ({ company }) => {
   return (
     <div className={styles.companyCard}>
       <div className={styles.cardMainInfo}>
         <div className={styles.cardFoto}>
-          {company
-            ? company.name
-                .split(/[\s,.-]+/)
-                .filter((word: string) => word.length > 3)
-                .map((word: string) => word[0])
-                .join('')
-            : ''}
+          {company?.name
+            .split(/[\s,.-]+/)
+            .filter((word: string) => word.length > 3)
+            .map((word: string) => word[0])
+            .join('')}
         </div>
         <div className={styles.cardTitle}>
           <div className={styles.cardName}>

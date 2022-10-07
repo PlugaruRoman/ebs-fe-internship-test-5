@@ -1,27 +1,52 @@
 import React from 'react';
 
-import { useInformer } from 'context/index';
+import axios from 'axios';
 
-import CompanyCard from 'components/Company/CompanyCard';
-import CompanyNav from 'components/Company/CompanyNav';
-import CompanyInfo from 'components/Company/CompanyInfo';
+import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
+
+import { useQuery } from 'react-query/react';
+
+const CompanyCard = dynamic(() => import('components/Company/CompanyCard'));
+const CompanyNav = dynamic(() => import('components/Company/CompanyNav'));
+const CompanyInfo = dynamic(() => import('components/Company/CompanyInfo'));
 import Modal from 'components/Modal/Modal';
 import Layout from 'components/Layout';
 
 import styles from 'styles/Home.module.scss';
 
+import Company from 'types/company';
+
 const Company = () => {
-  const { company } = useInformer();
+  const { query } = useRouter();
+
+  const { data } = useQuery(
+    ['company', query.id],
+    () => {
+      return axios
+        .get<Company>(
+          `https://app.informer.md/api/public/company?id=${query.id}`
+        )
+        .then((data) => data.data);
+    },
+
+    {
+      onError: (error) => {
+        alert(error);
+      },
+      enabled: !!query.id,
+    }
+  );
 
   return (
     <>
       <Layout>
-        {company && (
+        {data && (
           <div className={styles.content}>
             <Modal />
-            <CompanyCard />
+            <CompanyCard company={data} />
             <CompanyNav />
-            <CompanyInfo />
+            <CompanyInfo company={data} />
           </div>
         )}
       </Layout>

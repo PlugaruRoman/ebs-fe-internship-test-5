@@ -1,12 +1,15 @@
 import React from 'react';
 
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
 import { Pagination } from '@mui/material';
 
 import { useInformer } from 'context/index';
 
-import CompaniesCard from 'components/Companies/CompaniesCard';
+const CompaniesCard = dynamic(
+  () => import('components/Companies/CompaniesCard')
+);
 import Modal from 'components/Modal/Modal';
 import Layout from 'components/Layout';
 

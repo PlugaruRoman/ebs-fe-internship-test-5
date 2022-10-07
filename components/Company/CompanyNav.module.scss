@@ -4,7 +4,10 @@ $mobile: 620px;
   margin-right: 30px;
   font-weight: bold;
   cursor: pointer;
-  transition: opacity 0.1s ease-in-out;
+  transition: color 0.1s ease-in-out;
+  &:hover {
+    color: rgb(123, 138, 168);
+  }
   @media (max-width: $mobile) {
     padding: 10px 5px 0px 5px;
     margin: 0 auto;

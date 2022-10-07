@@ -15,12 +15,14 @@ import phone from 'public/phone.svg';
 import mail from 'public/mail.svg';
 import fax from 'public/fax.svg';
 
+import CompanyProps from 'types/companyprops';
+
 const MyAwesomeMap = dynamic(() => import('../OpenMap/OpenStreetMap'), {
   ssr: false,
 });
 
-const CompanyInfo: React.FC = () => {
-  const { company, changeModalState } = useInformer();
+const CompanyInfo: React.FC<CompanyProps> = ({ company }) => {
+  const { changeModalState } = useInformer();
   return (
     <div className={styles.contentCard}>
       <div className={styles.upColumn}>
@@ -109,7 +111,7 @@ const CompanyInfo: React.FC = () => {
           </div>
         </div>
         <div className={styles.mapContainer}>
-          <MyAwesomeMap />
+          <MyAwesomeMap company={company} />
         </div>
       </div>
     </div>

@@ -3,13 +3,10 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { useInformer } from 'context/contextes';
-
 import styles from './NavBar.module.scss';
 
 const Navbar: React.FC = () => {
   const { pathname } = useRouter();
-  const { company } = useInformer();
 
   return (
     <div className={styles.navBar}>
@@ -23,17 +20,6 @@ const Navbar: React.FC = () => {
           Companies
         </a>
       </Link>
-      {company && (
-        <Link href={'/company/[id]'} as={`/company/${company.id}`}>
-          <a
-            className={
-              pathname === '/company/[id]' ? styles.navActive : styles.nav
-            }
-          >
-            Company
-          </a>
-        </Link>
-      )}
     </div>
   );
 };

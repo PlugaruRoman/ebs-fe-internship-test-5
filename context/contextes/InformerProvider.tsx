@@ -2,12 +2,9 @@ import React from 'react';
 
 import axios from 'axios';
 
-import { useRouter } from 'next/router';
-
 import { InformerContext } from './InformerContext';
 
 import Companies from 'types/companies';
-import Company from 'types/company';
 import InformerProviderProps from 'types/informerProviderProps';
 
 export const InformerProvider: React.FC<InformerProviderProps> = ({
@@ -23,7 +20,6 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
   const [currentPage, setCurrentPage] = React.useState(1);
 
   const [selectedCompany, setSelectedCompany] = React.useState<Companies>();
-  const [company, setCompany] = React.useState<Company>();
 
   const [searchState, setSearchState] = React.useState(false);
   const [modalActive, setModalActive] = React.useState(false);
@@ -32,8 +28,6 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
     const { value } = event.target;
     setSearch(value);
   };
-
-  const { query } = useRouter();
 
   const searchCompanies = () => {
     setSearchState((prev) => !prev);
@@ -80,22 +74,6 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
     fetchData();
   }, [currentPage, , pages, searchState]);
 
-  React.useEffect(() => {
-    async function fetchData() {
-      if (query.id) {
-        try {
-          const companyResponse = await axios.get(
-            `https://app.informer.md/api/public/company?id=${query.id}`
-          );
-          setCompany(companyResponse.data);
-        } catch (error) {
-          alert('Error');
-        }
-      }
-    }
-    fetchData();
-  }, [query.id, selectedCompany]);
-
   const value = React.useMemo(
     () => ({
       onSearch,
@@ -107,7 +85,6 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
       search,
       foundCompanies,
       selectedCompany,
-      company,
       allCompanies,
       pages,
       currentPage,
@@ -124,7 +101,6 @@ export const InformerProvider: React.FC<InformerProviderProps> = ({
       search,
       foundCompanies,
       selectedCompany,
-      company,
       allCompanies,
       pages,
       currentPage,

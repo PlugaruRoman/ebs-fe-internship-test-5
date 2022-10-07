@@ -2,16 +2,17 @@ import React from 'react';
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-import { useInformer } from 'context/index';
-
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
 import 'leaflet-defaulticon-compatibility';
 
 import 'leaflet/dist/leaflet.css';
+import Company from 'types/company';
 
-const OpenStreetMap: React.FC = () => {
-  const { company } = useInformer();
+type CompanyProps = {
+  company: Company;
+};
 
+const OpenStreetMap: React.FC<CompanyProps> = ({ company }) => {
   const mapRef = React.useRef();
   React.useEffect(() => {});
   return (
